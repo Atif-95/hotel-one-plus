@@ -31,7 +31,7 @@ export default function AboutPage() {
         <Image src="https://images.unsplash.com/photo-1517840901100-8179e982acb7?w=1800" alt="About" fill style={{ objectFit: 'cover' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(13,27,42,0.72)' }} />
         <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-          <p style={{ color: '#b8892a', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Our Story</p>
+          <p style={{ color: '#a38057', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Our Story</p>
           <h1 style={{ fontSize: 'clamp(2rem,5vw,4rem)', fontWeight: 400, color: '#f5f0e8' }}>About Hotel One Plus</h1>
           <div className="gold-divider" style={{ marginTop: '1rem' }} />
         </div>
@@ -42,7 +42,7 @@ export default function AboutPage() {
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
             <div>
-              <p style={{ color: '#b8892a', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Est. 2012</p>
+              <p style={{ color: '#a38057', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Est. 2012</p>
               <h2 style={{ fontSize: 'clamp(1.8rem,3vw,2.8rem)', fontWeight: 400, color: '#f5f0e8', marginBottom: '1.5rem' }}>
                 Born from the Mountains,<br />Built for Travelers
               </h2>
@@ -58,8 +58,8 @@ export default function AboutPage() {
             </div>
             <div style={{ position: 'relative' }}>
               <Image src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800" alt="Hotel" width={550} height={420} style={{ width: '100%', height: 'auto', display: 'block' }} />
-              <div style={{ position: 'absolute', bottom: '-1.5rem', right: '-1.5rem', background: '#0a1520', border: '1px solid rgba(184,137,42,0.3)', padding: '1.5rem', maxWidth: '200px' }}>
-                <div style={{ color: '#d4a84b', fontSize: '2rem', fontWeight: 700, fontFamily: 'var(--font-sans)' }}>8,200</div>
+              <div style={{ position: 'absolute', bottom: '-1.5rem', right: '-1.5rem', background: '#0a1520', border: '1px solid rgba(163,128,87,0.3)', padding: '1.5rem', maxWidth: '200px' }}>
+                <div style={{ color: '#b8956b', fontSize: '2rem', fontWeight: 700, fontFamily: 'var(--font-sans)' }}>8,200</div>
                 <div style={{ color: '#8a9ab0', fontSize: '0.8rem', fontFamily: 'var(--font-sans)' }}>Feet above sea level</div>
               </div>
             </div>
@@ -68,7 +68,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section style={{ background: 'linear-gradient(135deg, #b8892a 0%, #8a6420 100%)', padding: '3rem 2rem' }}>
+      <section style={{ background: 'linear-gradient(135deg, #a38057 0%, #8a6420 100%)', padding: '3rem 2rem' }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '2rem', textAlign: 'center' }}>
           {stats.map(s => (
             <div key={s.num}>
@@ -83,15 +83,15 @@ export default function AboutPage() {
       <section className="section-pad" style={{ background: '#0a1520' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-            <p style={{ color: '#b8892a', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>What We Stand For</p>
+            <p style={{ color: '#a38057', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>What We Stand For</p>
             <h2 style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', fontWeight: 400, color: '#f5f0e8', marginBottom: '1rem' }}>Our Core Values</h2>
             <div className="gold-divider" />
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem' }}>
             {values.map(v => (
-              <div key={v.title} style={{ background: '#162032', border: '1px solid rgba(184,137,42,0.15)', padding: '2.5rem 2rem', textAlign: 'center' }}>
-                <div style={{ color: '#b8892a', marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>{v.icon}</div>
-                <h4 style={{ color: '#e8c97a', fontSize: '1.05rem', fontWeight: 400, marginBottom: '0.75rem' }}>{v.title}</h4>
+              <div key={v.title} style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.15)', padding: '2.5rem 2rem', textAlign: 'center' }}>
+                <div style={{ color: '#a38057', marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>{v.icon}</div>
+                <h4 style={{ color: '#cda882', fontSize: '1.05rem', fontWeight: 400, marginBottom: '0.75rem' }}>{v.title}</h4>
                 <p style={{ color: '#8a9ab0', fontSize: '0.88rem', lineHeight: 1.7 }}>{v.desc}</p>
               </div>
             ))}
@@ -103,17 +103,17 @@ export default function AboutPage() {
       <section className="section-pad" style={{ background: '#0d1b2a' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-            <p style={{ color: '#b8892a', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>The People Behind the Experience</p>
+            <p style={{ color: '#a38057', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>The People Behind the Experience</p>
             <h2 style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', fontWeight: 400, color: '#f5f0e8', marginBottom: '1rem' }}>Meet Our Team</h2>
             <div className="gold-divider" />
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem' }}>
             {team.map(m => (
               <div key={m.name} style={{ textAlign: 'center' }}>
-                <div style={{ position: 'relative', width: '140px', height: '140px', margin: '0 auto 1.25rem', borderRadius: '50%', overflow: 'hidden', border: '3px solid rgba(184,137,42,0.4)' }}>
+                <div style={{ position: 'relative', width: '140px', height: '140px', margin: '0 auto 1.25rem', borderRadius: '50%', overflow: 'hidden', border: '3px solid rgba(163,128,87,0.4)' }}>
                   <Image src={m.img} alt={m.name} fill style={{ objectFit: 'cover' }} />
                 </div>
-                <h4 style={{ color: '#e8c97a', fontSize: '1rem', fontWeight: 400, marginBottom: '0.3rem' }}>{m.name}</h4>
+                <h4 style={{ color: '#cda882', fontSize: '1rem', fontWeight: 400, marginBottom: '0.3rem' }}>{m.name}</h4>
                 <p style={{ color: '#8a9ab0', fontSize: '0.8rem', fontFamily: 'var(--font-sans)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{m.role}</p>
               </div>
             ))}
@@ -122,7 +122,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: '#0a1520', borderTop: '1px solid rgba(184,137,42,0.2)', borderBottom: '1px solid rgba(184,137,42,0.2)', padding: '4rem 2rem', textAlign: 'center' }}>
+      <section style={{ background: '#0a1520', borderTop: '1px solid rgba(163,128,87,0.2)', borderBottom: '1px solid rgba(163,128,87,0.2)', padding: '4rem 2rem', textAlign: 'center' }}>
         <h2 style={{ fontSize: 'clamp(1.5rem,3vw,2.5rem)', fontWeight: 400, color: '#f5f0e8', marginBottom: '1rem' }}>Experience It Yourself</h2>
         <p style={{ color: '#8a9ab0', fontSize: '1rem', marginBottom: '2rem', maxWidth: '500px', margin: '0 auto 2rem' }}>
           Come stay with us and discover why thousands of guests return to Hotel One Plus every year.

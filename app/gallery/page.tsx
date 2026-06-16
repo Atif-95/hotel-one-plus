@@ -27,22 +27,23 @@ export default function GalleryPage() {
         <Image src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800" alt="Gallery" fill style={{ objectFit: 'cover' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(13,27,42,0.72)' }} />
         <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-          <p style={{ color: '#b8892a', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Visual Journey</p>
+          <p style={{ color: '#a38057', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Visual Journey</p>
           <h1 style={{ fontSize: 'clamp(2rem,5vw,4rem)', fontWeight: 400, color: '#f5f0e8' }}>Photo Gallery</h1>
           <div className="gold-divider" style={{ marginTop: '1rem' }} />
         </div>
       </section>
 
       {/* Category filter */}
-      <section style={{ background: '#0a1520', padding: '1.5rem 0', borderBottom: '1px solid rgba(184,137,42,0.15)' }}>
+      <section style={{ background: '#0a1520', padding: '1.5rem 0', borderBottom: '1px solid rgba(163,128,87,0.15)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
           {CATS.map(c => (
             <button key={c} onClick={() => setCat(c)} style={{
-              background: cat === c ? 'linear-gradient(135deg,#b8892a,#d4a84b)' : 'transparent',
-              border: '1px solid rgba(184,137,42,0.4)', color: cat === c ? '#0d1b2a' : '#d4a84b',
-              padding: '0.5rem 1.5rem', cursor: 'pointer', fontSize: '0.75rem',
-              letterSpacing: '0.1em', fontFamily: 'var(--font-sans)', fontWeight: 600,
-              textTransform: 'uppercase', transition: 'all 0.2s',
+              background: cat === c ? 'linear-gradient(135deg,#a38057,#b8956b)' : 'transparent',
+              border: '1px solid rgba(163,128,87,0.4)', color: cat === c ? '#0d1b2a' : '#b8956b',
+              padding: '0.5rem 1.75rem', cursor: 'pointer', fontSize: '0.72rem',
+              letterSpacing: '0.12em', fontFamily: 'var(--font-sans)', fontWeight: 600,
+              textTransform: 'uppercase', transition: 'all 0.25s ease',
+              borderRadius: '2rem',
             }}>{c}</button>
           ))}
         </div>
@@ -71,7 +72,7 @@ export default function GalleryPage() {
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; (e.currentTarget.parentElement as HTMLElement).style.background = 'rgba(13,27,42,0.55)'; }}
                   >
                     <p style={{ color: '#f5f0e8', fontSize: '0.85rem', fontWeight: 600 }}>{item.caption}</p>
-                    <p style={{ color: '#d4a84b', fontSize: '0.7rem', letterSpacing: '0.1em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase' }}>{item.category}</p>
+                    <p style={{ color: '#b8956b', fontSize: '0.7rem', letterSpacing: '0.1em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase' }}>{item.category}</p>
                   </div>
                 </div>
               </div>
@@ -85,7 +86,7 @@ export default function GalleryPage() {
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.95)', zIndex: 300, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           onClick={() => setLightbox(null)}
         >
-          <button onClick={e => { e.stopPropagation(); prev(); }} style={{ position: 'absolute', left: '1rem', background: 'rgba(184,137,42,0.2)', border: '1px solid rgba(184,137,42,0.4)', color: '#d4a84b', padding: '0.75rem', cursor: 'pointer' }}>
+          <button onClick={e => { e.stopPropagation(); prev(); }} style={{ position: 'absolute', left: '1rem', background: 'rgba(163,128,87,0.2)', border: '1px solid rgba(163,128,87,0.4)', color: '#b8956b', padding: '0.75rem', cursor: 'pointer' }}>
             <ChevronLeft size={24} />
           </button>
           <div style={{ maxWidth: '80vw', maxHeight: '80vh', position: 'relative' }} onClick={e => e.stopPropagation()}>
@@ -94,13 +95,13 @@ export default function GalleryPage() {
             />
             <div style={{ textAlign: 'center', marginTop: '1rem' }}>
               <p style={{ color: '#f5f0e8', fontSize: '1rem' }}>{current.caption}</p>
-              <p style={{ color: '#b8892a', fontSize: '0.75rem', letterSpacing: '0.15em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase' }}>{current.category}</p>
+              <p style={{ color: '#a38057', fontSize: '0.75rem', letterSpacing: '0.15em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase' }}>{current.category}</p>
             </div>
           </div>
-          <button onClick={e => { e.stopPropagation(); next(); }} style={{ position: 'absolute', right: '1rem', background: 'rgba(184,137,42,0.2)', border: '1px solid rgba(184,137,42,0.4)', color: '#d4a84b', padding: '0.75rem', cursor: 'pointer' }}>
+          <button onClick={e => { e.stopPropagation(); next(); }} style={{ position: 'absolute', right: '1rem', background: 'rgba(163,128,87,0.2)', border: '1px solid rgba(163,128,87,0.4)', color: '#b8956b', padding: '0.75rem', cursor: 'pointer' }}>
             <ChevronRight size={24} />
           </button>
-          <button onClick={() => setLightbox(null)} style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'none', border: '1px solid rgba(184,137,42,0.4)', color: '#d4a84b', padding: '0.5rem', cursor: 'pointer' }}>
+          <button onClick={() => setLightbox(null)} style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'none', border: '1px solid rgba(163,128,87,0.4)', color: '#b8956b', padding: '0.5rem', cursor: 'pointer' }}>
             <X size={20} />
           </button>
           <p style={{ position: 'absolute', bottom: '1rem', left: '50%', transform: 'translateX(-50%)', color: '#8a9ab0', fontSize: '0.8rem', fontFamily: 'var(--font-sans)' }}>

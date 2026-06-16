@@ -29,7 +29,7 @@ export default function ContactPage() {
         <Image src="https://images.unsplash.com/photo-1517840901100-8179e982acb7?w=1800" alt="Contact" fill style={{ objectFit: 'cover' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(13,27,42,0.75)' }} />
         <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-          <p style={{ color: '#b8892a', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Get in Touch</p>
+          <p style={{ color: '#a38057', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Get in Touch</p>
           <h1 style={{ fontSize: 'clamp(2rem,5vw,4rem)', fontWeight: 400, color: '#f5f0e8' }}>Contact Us</h1>
           <div className="gold-divider" style={{ marginTop: '1rem' }} />
         </div>
@@ -42,17 +42,17 @@ export default function ContactPage() {
 
             {/* Info */}
             <div>
-              <p style={{ color: '#b8892a', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Reach Us</p>
+              <p style={{ color: '#a38057', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Reach Us</p>
               <h2 style={{ fontSize: '2rem', fontWeight: 400, color: '#f5f0e8', marginBottom: '1rem' }}>We're Here to Help</h2>
               <p style={{ color: '#8a9ab0', lineHeight: 1.8, marginBottom: '2.5rem', fontSize: '0.92rem' }}>
                 Have questions about bookings, facilities, or activities? Our team is available daily to assist you. Reach us via phone, WhatsApp, or email — we typically respond within 2 hours.
               </p>
 
               {info.map(i => (
-                <div key={i.label} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid rgba(184,137,42,0.1)' }}>
-                  <div style={{ color: '#b8892a', flexShrink: 0, marginTop: '2px' }}>{i.icon}</div>
+                <div key={i.label} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid rgba(163,128,87,0.1)' }}>
+                  <div style={{ color: '#a38057', flexShrink: 0, marginTop: '2px' }}>{i.icon}</div>
                   <div>
-                    <div style={{ color: '#d4a84b', fontSize: '0.7rem', letterSpacing: '0.15em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.25rem' }}>{i.label}</div>
+                    <div style={{ color: '#b8956b', fontSize: '0.7rem', letterSpacing: '0.15em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.25rem' }}>{i.label}</div>
                     <div style={{ color: '#c8c0b0', fontSize: '0.92rem' }}>{i.value}</div>
                   </div>
                 </div>
@@ -70,12 +70,12 @@ export default function ContactPage() {
             </div>
 
             {/* Form */}
-            <div style={{ background: '#162032', border: '1px solid rgba(184,137,42,0.2)', padding: '2.5rem' }}>
-              <h3 style={{ color: '#e8c97a', fontSize: '1.3rem', fontWeight: 400, marginBottom: '0.5rem' }}>Send a Message</h3>
+            <div style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.2)', padding: '2.5rem' }}>
+              <h3 style={{ color: '#cda882', fontSize: '1.3rem', fontWeight: 400, marginBottom: '0.5rem' }}>Send a Message</h3>
               <p style={{ color: '#8a9ab0', fontSize: '0.85rem', marginBottom: '2rem' }}>Fill the form and we'll get back to you shortly.</p>
 
               {sent && (
-                <div style={{ background: 'rgba(184,137,42,0.15)', border: '1px solid rgba(184,137,42,0.4)', color: '#e8c97a', padding: '1rem', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
+                <div style={{ background: 'rgba(163,128,87,0.15)', border: '1px solid rgba(163,128,87,0.4)', color: '#cda882', padding: '1rem', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
                   ✓ Message sent! We'll reply within 24 hours.
                 </div>
               )}
@@ -88,20 +88,20 @@ export default function ContactPage() {
                   { label: 'Subject', key: 'subject', type: 'text', placeholder: 'Booking inquiry...', col: 1 },
                 ].map(f => (
                   <div key={f.key} style={{ gridColumn: 'span 1' }}>
-                    <label style={{ display: 'block', color: '#d4a84b', fontSize: '0.65rem', letterSpacing: '0.15em', fontFamily: 'var(--font-sans)', marginBottom: '0.4rem', textTransform: 'uppercase' }}>{f.label}</label>
+                    <label style={{ display: 'block', color: '#b8956b', fontSize: '0.65rem', letterSpacing: '0.15em', fontFamily: 'var(--font-sans)', marginBottom: '0.4rem', textTransform: 'uppercase' }}>{f.label}</label>
                     <input type={f.type} placeholder={f.placeholder} value={(form as Record<string, string>)[f.key]}
                       onChange={e => setForm(p => ({ ...p, [f.key]: e.target.value }))}
-                      style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,137,42,0.3)', color: '#f5f0e8', padding: '0.7rem 1rem', fontSize: '0.9rem', outline: 'none' }}
+                      style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(163,128,87,0.3)', color: '#f5f0e8', padding: '0.7rem 1rem', fontSize: '0.9rem', outline: 'none' }}
                     />
                   </div>
                 ))}
               </div>
 
               <div style={{ marginBottom: '1.5rem' }}>
-                <label style={{ display: 'block', color: '#d4a84b', fontSize: '0.65rem', letterSpacing: '0.15em', fontFamily: 'var(--font-sans)', marginBottom: '0.4rem', textTransform: 'uppercase' }}>Message *</label>
+                <label style={{ display: 'block', color: '#b8956b', fontSize: '0.65rem', letterSpacing: '0.15em', fontFamily: 'var(--font-sans)', marginBottom: '0.4rem', textTransform: 'uppercase' }}>Message *</label>
                 <textarea rows={5} placeholder="Tell us how we can help you..." value={form.message}
                   onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
-                  style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,137,42,0.3)', color: '#f5f0e8', padding: '0.7rem 1rem', fontSize: '0.9rem', outline: 'none', resize: 'vertical', fontFamily: 'var(--font-serif)' }}
+                  style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(163,128,87,0.3)', color: '#f5f0e8', padding: '0.7rem 1rem', fontSize: '0.9rem', outline: 'none', resize: 'vertical', fontFamily: 'var(--font-serif)' }}
                 />
               </div>
 
@@ -117,9 +117,9 @@ export default function ContactPage() {
 
       {/* Map embed placeholder */}
       <section style={{ background: '#0a1520', padding: '0' }}>
-        <div style={{ width: '100%', height: '350px', background: '#162032', border: '1px solid rgba(184,137,42,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '1rem' }}>
-          <MapPin size={40} color="#b8892a" />
-          <p style={{ color: '#e8c97a', fontSize: '1rem' }}>Naran Valley, Kaghan, KPK</p>
+        <div style={{ width: '100%', height: '350px', background: '#162032', border: '1px solid rgba(163,128,87,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '1rem' }}>
+          <MapPin size={40} color="#a38057" />
+          <p style={{ color: '#cda882', fontSize: '1rem' }}>Naran Valley, Kaghan, KPK</p>
           <p style={{ color: '#8a9ab0', fontSize: '0.85rem', fontFamily: 'var(--font-sans)' }}>Coordinates: 34.9°N 73.65°E</p>
           <a href="https://maps.google.com/?q=Naran+Valley+KPK+Pakistan" target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ textDecoration: 'none', marginTop: '0.5rem' }}>
             Open in Google Maps

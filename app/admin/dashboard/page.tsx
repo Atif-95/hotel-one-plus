@@ -90,7 +90,7 @@ export default function AdminDashboard() {
 
   if (!db) return (
     <div style={{ minHeight: '100vh', background: '#0a1015', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <p style={{ color: '#d4a84b', fontFamily: 'var(--font-sans)', letterSpacing: '0.2em' }}>LOADING DASHBOARD...</p>
+      <p style={{ color: '#b8956b', fontFamily: 'var(--font-sans)', letterSpacing: '0.2em' }}>LOADING DASHBOARD...</p>
     </div>
   );
 
@@ -105,14 +105,14 @@ export default function AdminDashboard() {
 
       {/* Sidebar */}
       <aside style={{
-        width: SIDEBAR_W, background: '#0a1520', borderRight: '1px solid rgba(184,137,42,0.15)',
+        width: SIDEBAR_W, background: '#0a1520', borderRight: '1px solid rgba(163,128,87,0.15)',
         display: 'flex', flexDirection: 'column', transition: 'width 0.3s', overflow: 'hidden',
         position: 'fixed', top: 0, left: 0, bottom: 0, zIndex: 50,
       }}>
         {/* Logo */}
-        <div style={{ padding: '1.25rem', borderBottom: '1px solid rgba(184,137,42,0.15)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ padding: '1.25rem', borderBottom: '1px solid rgba(163,128,87,0.15)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <Image src="/logo.jpeg" alt="Logo" width={38} height={38} style={{ borderRadius: '4px', flexShrink: 0 }} />
-          {sidebarOpen && <div style={{ color: '#d4a84b', fontSize: '0.75rem', letterSpacing: '0.1em', fontWeight: 700, whiteSpace: 'nowrap' }}>HOTEL ONE PLUS<br /><span style={{ color: '#8a9ab0', fontSize: '0.6rem' }}>CRM PORTAL</span></div>}
+          {sidebarOpen && <div style={{ color: '#b8956b', fontSize: '0.75rem', letterSpacing: '0.1em', fontWeight: 700, whiteSpace: 'nowrap' }}>HOTEL ONE PLUS<br /><span style={{ color: '#8a9ab0', fontSize: '0.6rem' }}>CRM PORTAL</span></div>}
         </div>
 
         {/* Nav */}
@@ -121,9 +121,9 @@ export default function AdminDashboard() {
             <button key={n.key} onClick={() => setTab(n.key)} style={{
               display: 'flex', alignItems: 'center', gap: '0.75rem', width: '100%',
               padding: sidebarOpen ? '0.8rem 1.25rem' : '0.8rem', justifyContent: sidebarOpen ? 'flex-start' : 'center',
-              background: tab === n.key ? 'rgba(184,137,42,0.12)' : 'transparent',
-              borderLeft: tab === n.key ? '3px solid #d4a84b' : '3px solid transparent',
-              border: 'none', color: tab === n.key ? '#d4a84b' : '#8a9ab0',
+              background: tab === n.key ? 'rgba(163,128,87,0.12)' : 'transparent',
+              borderLeft: tab === n.key ? '3px solid #b8956b' : '3px solid transparent',
+              border: 'none', color: tab === n.key ? '#b8956b' : '#8a9ab0',
               cursor: 'pointer', fontSize: '0.85rem', letterSpacing: '0.05em',
               transition: 'all 0.2s', whiteSpace: 'nowrap',
             }}>
@@ -134,8 +134,8 @@ export default function AdminDashboard() {
         </nav>
 
         {/* Bottom */}
-        <div style={{ borderTop: '1px solid rgba(184,137,42,0.15)', padding: '1rem' }}>
-          {sidebarOpen && <div style={{ color: '#e8c97a', fontSize: '0.8rem', marginBottom: '0.75rem', padding: '0 0.25rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}><User size={14} /> {adminName}</div>}
+        <div style={{ borderTop: '1px solid rgba(163,128,87,0.15)', padding: '1rem' }}>
+          {sidebarOpen && <div style={{ color: '#cda882', fontSize: '0.8rem', marginBottom: '0.75rem', padding: '0 0.25rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}><User size={14} /> {adminName}</div>}
           <button onClick={logout} style={{
             display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#8a9ab0',
             background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem',
@@ -149,16 +149,16 @@ export default function AdminDashboard() {
       {/* Main */}
       <main style={{ marginLeft: SIDEBAR_W, flex: 1, transition: 'margin-left 0.3s', minWidth: 0 }}>
         {/* Topbar */}
-        <div style={{ background: '#0a1520', borderBottom: '1px solid rgba(184,137,42,0.15)', padding: '1rem 1.5rem', display: 'flex', alignItems: 'center', gap: '1rem', position: 'sticky', top: 0, zIndex: 40 }}>
-          <button onClick={() => setSidebarOpen(v => !v)} style={{ background: 'none', border: 'none', color: '#d4a84b', cursor: 'pointer' }}>
+        <div style={{ background: '#0a1520', borderBottom: '1px solid rgba(163,128,87,0.15)', padding: '1rem 1.5rem', display: 'flex', alignItems: 'center', gap: '1rem', position: 'sticky', top: 0, zIndex: 40 }}>
+          <button onClick={() => setSidebarOpen(v => !v)} style={{ background: 'none', border: 'none', color: '#b8956b', cursor: 'pointer' }}>
             <Menu size={20} />
           </button>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#8a9ab0', fontSize: '0.8rem' }}>
-            <span style={{ color: '#d4a84b' }}>Admin</span>
+            <span style={{ color: '#b8956b' }}>Admin</span>
             <ChevronRight size={12} />
             <span style={{ color: '#f5f0e8', textTransform: 'capitalize' }}>{tab}</span>
           </div>
-          <div style={{ marginLeft: 'auto', background: 'rgba(184,137,42,0.1)', border: '1px solid rgba(184,137,42,0.25)', color: '#d4a84b', padding: '0.3rem 0.75rem', fontSize: '0.72rem' }}>
+          <div style={{ marginLeft: 'auto', background: 'rgba(163,128,87,0.1)', border: '1px solid rgba(163,128,87,0.25)', color: '#b8956b', padding: '0.3rem 0.75rem', fontSize: '0.72rem' }}>
             {pendingCount} Pending
           </div>
         </div>
@@ -173,12 +173,12 @@ export default function AdminDashboard() {
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
                 {[
-                  { label: 'Total Rooms', value: db.rooms.length, color: '#d4a84b', bg: 'rgba(184,137,42,0.1)' },
+                  { label: 'Total Rooms', value: db.rooms.length, color: '#b8956b', bg: 'rgba(163,128,87,0.1)' },
                   { label: 'Available', value: available, color: '#4caf50', bg: 'rgba(76,175,80,0.1)' },
                   { label: 'Booked / Unavailable', value: booked, color: '#f44336', bg: 'rgba(244,67,54,0.1)' },
                   { label: 'Total Bookings', value: bookings.length, color: '#2196f3', bg: 'rgba(33,150,243,0.1)' },
                   { label: 'Pending Requests', value: pendingCount, color: '#ff9800', bg: 'rgba(255,152,0,0.1)' },
-                  { label: 'Rating', value: db.hotel.rating + '★', color: '#e8c97a', bg: 'rgba(232,201,122,0.1)' },
+                  { label: 'Rating', value: db.hotel.rating + '★', color: '#cda882', bg: 'rgba(232,201,122,0.1)' },
                 ].map(s => (
                   <div key={s.label} style={{ background: '#162032', border: `1px solid ${s.bg}`, padding: '1.5rem', borderLeft: `3px solid ${s.color}` }}>
                     <div style={{ color: s.color, fontSize: '2rem', fontWeight: 700 }}>{s.value}</div>
@@ -188,13 +188,13 @@ export default function AdminDashboard() {
               </div>
 
               {/* Recent Bookings Preview */}
-              <h3 style={{ color: '#e8c97a', fontSize: '1rem', marginBottom: '1rem' }}>Recent Bookings</h3>
-              <div style={{ background: '#162032', border: '1px solid rgba(184,137,42,0.15)', overflowX: 'auto' }}>
+              <h3 style={{ color: '#cda882', fontSize: '1rem', marginBottom: '1rem' }}>Recent Bookings</h3>
+              <div style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.15)', overflowX: 'auto' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                   <thead>
-                    <tr style={{ borderBottom: '1px solid rgba(184,137,42,0.15)' }}>
+                    <tr style={{ borderBottom: '1px solid rgba(163,128,87,0.15)' }}>
                       {['Guest', 'Room', 'Check-in', 'Status'].map(h => (
-                        <th key={h} style={{ padding: '0.85rem 1rem', textAlign: 'left', color: '#d4a84b', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{h}</th>
+                        <th key={h} style={{ padding: '0.85rem 1rem', textAlign: 'left', color: '#b8956b', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{h}</th>
                       ))}
                     </tr>
                   </thead>
@@ -228,7 +228,7 @@ export default function AdminDashboard() {
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.25rem' }}>
                 {db.rooms.map(room => (
-                  <div key={room.id} style={{ background: '#162032', border: '1px solid rgba(184,137,42,0.15)', overflow: 'hidden' }}>
+                  <div key={room.id} style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.15)', overflow: 'hidden' }}>
                     <div style={{ position: 'relative', height: '160px' }}>
                       <img src={room.image} alt={room.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem', background: room.available ? 'rgba(76,175,80,0.9)' : 'rgba(244,67,54,0.9)', color: '#fff', fontSize: '0.65rem', padding: '0.2rem 0.6rem', fontWeight: 700 }}>
@@ -237,8 +237,8 @@ export default function AdminDashboard() {
                     </div>
                     <div style={{ padding: '1.25rem' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
-                        <h4 style={{ color: '#e8c97a', fontSize: '0.95rem', fontWeight: 400 }}>{room.name}</h4>
-                        <span style={{ color: '#d4a84b', fontSize: '0.85rem', fontWeight: 700 }}>PKR {room.price.toLocaleString()}</span>
+                        <h4 style={{ color: '#cda882', fontSize: '0.95rem', fontWeight: 400 }}>{room.name}</h4>
+                        <span style={{ color: '#b8956b', fontSize: '0.85rem', fontWeight: 700 }}>PKR {room.price.toLocaleString()}</span>
                       </div>
                       <p style={{ color: '#8a9ab0', fontSize: '0.78rem', marginBottom: '1rem' }}>
                         {room.type} · {room.bed} · {room.capacity} guests
@@ -252,7 +252,7 @@ export default function AdminDashboard() {
                         }}>
                           {room.available ? 'Mark Booked' : 'Mark Available'}
                         </button>
-                        <button onClick={() => setEditRoom(room)} style={{ background: 'rgba(184,137,42,0.1)', border: '1px solid rgba(184,137,42,0.3)', color: '#d4a84b', padding: '0.4rem 0.7rem', cursor: 'pointer' }}>
+                        <button onClick={() => setEditRoom(room)} style={{ background: 'rgba(163,128,87,0.1)', border: '1px solid rgba(163,128,87,0.3)', color: '#b8956b', padding: '0.4rem 0.7rem', cursor: 'pointer' }}>
                           <Pencil size={14} />
                         </button>
                         <button onClick={() => deleteRoom(room.id)} style={{ background: 'rgba(244,67,54,0.1)', border: '1px solid rgba(244,67,54,0.3)', color: '#f44336', padding: '0.4rem 0.7rem', cursor: 'pointer' }}>
@@ -270,12 +270,12 @@ export default function AdminDashboard() {
           {tab === 'bookings' && (
             <div>
               <h2 style={{ color: '#f5f0e8', fontSize: '1.4rem', fontWeight: 400, marginBottom: '1.5rem' }}>Bookings Management</h2>
-              <div style={{ background: '#162032', border: '1px solid rgba(184,137,42,0.15)', overflowX: 'auto' }}>
+              <div style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.15)', overflowX: 'auto' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '700px' }}>
                   <thead>
-                    <tr style={{ borderBottom: '1px solid rgba(184,137,42,0.2)' }}>
+                    <tr style={{ borderBottom: '1px solid rgba(163,128,87,0.2)' }}>
                       {['Guest', 'Room', 'Check-in', 'Check-out', 'Guests', 'Status', 'Actions'].map(h => (
-                        <th key={h} style={{ padding: '1rem', textAlign: 'left', color: '#d4a84b', fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase', background: 'rgba(184,137,42,0.05)' }}>{h}</th>
+                        <th key={h} style={{ padding: '1rem', textAlign: 'left', color: '#b8956b', fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase', background: 'rgba(163,128,87,0.05)' }}>{h}</th>
                       ))}
                     </tr>
                   </thead>
@@ -328,15 +328,15 @@ export default function AdminDashboard() {
               <h2 style={{ color: '#f5f0e8', fontSize: '1.4rem', fontWeight: 400, marginBottom: '1.5rem' }}>Guest Reviews</h2>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.25rem' }}>
                 {db.testimonials.map(t => (
-                  <div key={t.id} style={{ background: '#162032', border: '1px solid rgba(184,137,42,0.15)', padding: '1.5rem' }}>
+                  <div key={t.id} style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.15)', padding: '1.5rem' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
                       <div>
-                        <div style={{ color: '#e8c97a', fontWeight: 600, fontSize: '0.9rem' }}>{t.name}</div>
+                        <div style={{ color: '#cda882', fontWeight: 600, fontSize: '0.9rem' }}>{t.name}</div>
                         <div style={{ color: '#8a9ab0', fontSize: '0.75rem' }}>{t.city} · {t.date}</div>
                       </div>
                       <div style={{ display: 'flex', gap: '2px' }}>
                         {Array.from({ length: t.rating }).map((_, i) => (
-                          <span key={i} style={{ color: '#d4a84b', fontSize: '0.85rem' }}>★</span>
+                          <span key={i} style={{ color: '#b8956b', fontSize: '0.85rem' }}>★</span>
                         ))}
                       </div>
                     </div>
@@ -352,10 +352,10 @@ export default function AdminDashboard() {
       {/* Add Room Modal */}
       {showAddRoom && (
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
-          <div style={{ background: '#162032', border: '1px solid rgba(184,137,42,0.3)', maxWidth: '500px', width: '100%', padding: '2rem', maxHeight: '85vh', overflowY: 'auto' }}>
+          <div style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.3)', maxWidth: '500px', width: '100%', padding: '2rem', maxHeight: '85vh', overflowY: 'auto' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h3 style={{ color: '#e8c97a', fontSize: '1.1rem', fontWeight: 400 }}>Add New Room</h3>
-              <button onClick={() => setShowAddRoom(false)} style={{ background: 'none', border: 'none', color: '#d4a84b', cursor: 'pointer', fontSize: '1.5rem' }}>×</button>
+              <h3 style={{ color: '#cda882', fontSize: '1.1rem', fontWeight: 400 }}>Add New Room</h3>
+              <button onClick={() => setShowAddRoom(false)} style={{ background: 'none', border: 'none', color: '#b8956b', cursor: 'pointer', fontSize: '1.5rem' }}>×</button>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
               {[
@@ -365,39 +365,39 @@ export default function AdminDashboard() {
                 { label: 'Bed Type', key: 'bed', type: 'text', placeholder: '1 King Bed' },
               ].map(f => (
                 <div key={f.key}>
-                  <label style={{ display: 'block', color: '#d4a84b', fontSize: '0.62rem', letterSpacing: '0.15em', marginBottom: '0.35rem', textTransform: 'uppercase' }}>{f.label}</label>
+                  <label style={{ display: 'block', color: '#b8956b', fontSize: '0.62rem', letterSpacing: '0.15em', marginBottom: '0.35rem', textTransform: 'uppercase' }}>{f.label}</label>
                   <input type={f.type} placeholder={f.placeholder} value={(newRoom as Record<string, string | boolean>)[f.key] as string}
                     onChange={e => setNewRoom(p => ({ ...p, [f.key]: e.target.value }))}
-                    style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,137,42,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none' }}
+                    style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(163,128,87,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none' }}
                   />
                 </div>
               ))}
               <div>
-                <label style={{ display: 'block', color: '#d4a84b', fontSize: '0.62rem', letterSpacing: '0.15em', marginBottom: '0.35rem', textTransform: 'uppercase' }}>Type</label>
+                <label style={{ display: 'block', color: '#b8956b', fontSize: '0.62rem', letterSpacing: '0.15em', marginBottom: '0.35rem', textTransform: 'uppercase' }}>Type</label>
                 <select value={newRoom.type} onChange={e => setNewRoom(p => ({ ...p, type: e.target.value }))}
-                  style={{ width: '100%', background: '#0d1b2a', border: '1px solid rgba(184,137,42,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none' }}>
+                  style={{ width: '100%', background: '#0d1b2a', border: '1px solid rgba(163,128,87,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none' }}>
                   {['standard', 'deluxe', 'suite', 'premium'].map(t => <option key={t} value={t}>{t.charAt(0).toUpperCase() + t.slice(1)}</option>)}
                 </select>
               </div>
               <div>
-                <label style={{ display: 'block', color: '#d4a84b', fontSize: '0.62rem', letterSpacing: '0.15em', marginBottom: '0.35rem', textTransform: 'uppercase' }}>Capacity</label>
+                <label style={{ display: 'block', color: '#b8956b', fontSize: '0.62rem', letterSpacing: '0.15em', marginBottom: '0.35rem', textTransform: 'uppercase' }}>Capacity</label>
                 <select value={newRoom.capacity} onChange={e => setNewRoom(p => ({ ...p, capacity: e.target.value }))}
-                  style={{ width: '100%', background: '#0d1b2a', border: '1px solid rgba(184,137,42,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none' }}>
+                  style={{ width: '100%', background: '#0d1b2a', border: '1px solid rgba(163,128,87,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none' }}>
                   {['1', '2', '3', '4', '5', '6'].map(n => <option key={n} value={n}>{n} Guests</option>)}
                 </select>
               </div>
             </div>
             <div style={{ marginTop: '0.75rem' }}>
-              <label style={{ display: 'block', color: '#d4a84b', fontSize: '0.62rem', letterSpacing: '0.15em', marginBottom: '0.35rem', textTransform: 'uppercase' }}>Image URL</label>
+              <label style={{ display: 'block', color: '#b8956b', fontSize: '0.62rem', letterSpacing: '0.15em', marginBottom: '0.35rem', textTransform: 'uppercase' }}>Image URL</label>
               <input type="url" placeholder="https://images.unsplash.com/..." value={newRoom.image}
                 onChange={e => setNewRoom(p => ({ ...p, image: e.target.value }))}
-                style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,137,42,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none' }}
+                style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(163,128,87,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none' }}
               />
             </div>
             <div style={{ marginTop: '0.75rem', marginBottom: '1.25rem' }}>
-              <label style={{ display: 'block', color: '#d4a84b', fontSize: '0.62rem', letterSpacing: '0.15em', marginBottom: '0.35rem', textTransform: 'uppercase' }}>Description</label>
+              <label style={{ display: 'block', color: '#b8956b', fontSize: '0.62rem', letterSpacing: '0.15em', marginBottom: '0.35rem', textTransform: 'uppercase' }}>Description</label>
               <textarea rows={3} value={newRoom.description} onChange={e => setNewRoom(p => ({ ...p, description: e.target.value }))}
-                style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,137,42,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none', resize: 'vertical', fontFamily: 'var(--font-serif)' }}
+                style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(163,128,87,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none', resize: 'vertical', fontFamily: 'var(--font-serif)' }}
               />
             </div>
             <div style={{ display: 'flex', gap: '0.75rem' }}>
@@ -411,10 +411,10 @@ export default function AdminDashboard() {
       {/* Edit Room Modal */}
       {editRoom && (
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
-          <div style={{ background: '#162032', border: '1px solid rgba(184,137,42,0.3)', maxWidth: '500px', width: '100%', padding: '2rem', maxHeight: '85vh', overflowY: 'auto' }}>
+          <div style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.3)', maxWidth: '500px', width: '100%', padding: '2rem', maxHeight: '85vh', overflowY: 'auto' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h3 style={{ color: '#e8c97a', fontSize: '1.1rem', fontWeight: 400 }}>Edit: {editRoom.name}</h3>
-              <button onClick={() => setEditRoom(null)} style={{ background: 'none', border: 'none', color: '#d4a84b', cursor: 'pointer', fontSize: '1.5rem' }}>×</button>
+              <h3 style={{ color: '#cda882', fontSize: '1.1rem', fontWeight: 400 }}>Edit: {editRoom.name}</h3>
+              <button onClick={() => setEditRoom(null)} style={{ background: 'none', border: 'none', color: '#b8956b', cursor: 'pointer', fontSize: '1.5rem' }}>×</button>
             </div>
             {[
               { label: 'Room Name', key: 'name', type: 'text' },
@@ -422,15 +422,15 @@ export default function AdminDashboard() {
               { label: 'Description', key: 'description', type: 'textarea' },
             ].map(f => (
               <div key={f.key} style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', color: '#d4a84b', fontSize: '0.62rem', letterSpacing: '0.15em', marginBottom: '0.35rem', textTransform: 'uppercase' }}>{f.label}</label>
+                <label style={{ display: 'block', color: '#b8956b', fontSize: '0.62rem', letterSpacing: '0.15em', marginBottom: '0.35rem', textTransform: 'uppercase' }}>{f.label}</label>
                 {f.type === 'textarea'
                   ? <textarea rows={3} value={(editRoom as unknown as Record<string, string>)[f.key]}
                       onChange={e => setEditRoom(p => p ? ({ ...p, [f.key]: e.target.value }) : null)}
-                      style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,137,42,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none', resize: 'vertical', fontFamily: 'var(--font-serif)' }}
+                      style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(163,128,87,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none', resize: 'vertical', fontFamily: 'var(--font-serif)' }}
                     />
                   : <input type={f.type} value={(editRoom as unknown as Record<string, string>)[f.key]}
                       onChange={e => setEditRoom(p => p ? ({ ...p, [f.key]: e.target.value }) : null)}
-                      style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,137,42,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none' }}
+                      style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(163,128,87,0.3)', color: '#f5f0e8', padding: '0.6rem 0.75rem', fontSize: '0.85rem', outline: 'none' }}
                     />
                 }
               </div>

@@ -27,22 +27,23 @@ export default function RoomsPage() {
         <Image src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1800" alt="Rooms" fill style={{ objectFit: 'cover' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(13,27,42,0.75)' }} />
         <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-          <p style={{ color: '#b8892a', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Accommodation</p>
+          <p style={{ color: '#a38057', fontSize: '0.7rem', letterSpacing: '0.3em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Accommodation</p>
           <h1 style={{ fontSize: 'clamp(2rem,5vw,4rem)', fontWeight: 400, color: '#f5f0e8' }}>Rooms & Suites</h1>
           <div className="gold-divider" style={{ marginTop: '1rem' }} />
         </div>
       </section>
 
       {/* Filters */}
-      <section style={{ background: '#0a1520', padding: '1.5rem 0', borderBottom: '1px solid rgba(184,137,42,0.15)' }}>
+      <section style={{ background: '#0a1520', padding: '1.5rem 0', borderBottom: '1px solid rgba(163,128,87,0.15)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
           {FILTERS.map(f => (
             <button key={f} onClick={() => setFilter(f)} style={{
-              background: filter === f ? 'linear-gradient(135deg,#b8892a,#d4a84b)' : 'transparent',
-              border: '1px solid rgba(184,137,42,0.4)', color: filter === f ? '#0d1b2a' : '#d4a84b',
-              padding: '0.5rem 1.5rem', cursor: 'pointer', fontSize: '0.75rem',
-              letterSpacing: '0.1em', fontFamily: 'var(--font-sans)', fontWeight: 600,
-              textTransform: 'uppercase', transition: 'all 0.2s',
+              background: filter === f ? 'linear-gradient(135deg,#a38057,#b8956b)' : 'transparent',
+              border: '1px solid rgba(163,128,87,0.4)', color: filter === f ? '#0d1b2a' : '#b8956b',
+              padding: '0.5rem 1.75rem', cursor: 'pointer', fontSize: '0.72rem',
+              letterSpacing: '0.12em', fontFamily: 'var(--font-sans)', fontWeight: 600,
+              textTransform: 'uppercase', transition: 'all 0.25s ease',
+              borderRadius: '2rem',
             }}>
               {f}
             </button>
@@ -55,10 +56,10 @@ export default function RoomsPage() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 1fr))', gap: '2rem' }}>
             {filtered.map(room => (
-              <div key={room.id} className="card-hover" style={{ background: '#162032', border: '1px solid rgba(184,137,42,0.15)', overflow: 'hidden' }}>
+              <div key={room.id} className="card-hover" style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.15)', overflow: 'hidden' }}>
                 <div style={{ position: 'relative', height: '240px' }}>
                   <Image src={room.image} alt={room.name} fill style={{ objectFit: 'cover' }} />
-                  <div style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'rgba(13,27,42,0.85)', border: '1px solid rgba(184,137,42,0.4)', color: '#d4a84b', fontSize: '0.65rem', padding: '0.3rem 0.8rem', fontFamily: 'var(--font-sans)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                  <div style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'rgba(13,27,42,0.85)', border: '1px solid rgba(163,128,87,0.4)', color: '#b8956b', fontSize: '0.65rem', padding: '0.3rem 0.8rem', fontFamily: 'var(--font-sans)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                     {room.type}
                   </div>
                   <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: room.available ? 'rgba(34,139,34,0.85)' : 'rgba(180,50,50,0.85)', color: '#fff', fontSize: '0.65rem', padding: '0.3rem 0.8rem', fontFamily: 'var(--font-sans)', fontWeight: 700 }}>
@@ -66,7 +67,7 @@ export default function RoomsPage() {
                   </div>
                 </div>
                 <div style={{ padding: '1.75rem' }}>
-                  <h3 style={{ color: '#e8c97a', fontSize: '1.2rem', fontWeight: 400, marginBottom: '0.75rem' }}>{room.name}</h3>
+                  <h3 style={{ color: '#cda882', fontSize: '1.2rem', fontWeight: 400, marginBottom: '0.75rem' }}>{room.name}</h3>
                   <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '1rem' }}>
                     <span style={{ color: '#8a9ab0', fontSize: '0.8rem', fontFamily: 'var(--font-sans)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                       <Users size={13} /> {room.capacity} Guests
@@ -82,13 +83,13 @@ export default function RoomsPage() {
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1.5rem' }}>
                     {room.amenities.slice(0, 5).map(a => (
                       <span key={a} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', color: '#8a9ab0', fontSize: '0.72rem', fontFamily: 'var(--font-sans)' }}>
-                        <Check size={11} color="#b8892a" /> {a}
+                        <Check size={11} color="#a38057" /> {a}
                       </span>
                     ))}
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', paddingTop: '1rem', borderTop: '1px solid rgba(184,137,42,0.1)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', paddingTop: '1rem', borderTop: '1px solid rgba(163,128,87,0.1)' }}>
                     <div>
-                      <span style={{ color: '#d4a84b', fontSize: '1.5rem', fontWeight: 700, fontFamily: 'var(--font-sans)' }}>
+                      <span style={{ color: '#b8956b', fontSize: '1.5rem', fontWeight: 700, fontFamily: 'var(--font-sans)' }}>
                         PKR {room.price.toLocaleString()}
                       </span>
                       <span style={{ color: '#8a9ab0', fontSize: '0.75rem', fontFamily: 'var(--font-sans)' }}>/night</span>

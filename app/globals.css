@@ -1,15 +1,26 @@
 @import "tailwindcss";
 
+@font-face { font-family: 'Scaver'; src: url('/fonts/Scaver-Thin.ttf') format('truetype'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Scaver'; src: url('/fonts/Scaver-ExtraLight.ttf') format('truetype'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Scaver'; src: url('/fonts/Scaver-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Scaver'; src: url('/fonts/Scaver-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Scaver'; src: url('/fonts/Scaver-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Scaver'; src: url('/fonts/Scaver-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Scaver'; src: url('/fonts/Scaver-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Scaver'; src: url('/fonts/Scaver-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Scaver'; src: url('/fonts/Scaver-Black.ttf') format('truetype'); font-weight: 900; font-style: normal; font-display: swap; }
+
 :root {
   --navy: #0d1b2a;
   --navy-light: #162032;
   --navy-mid: #1e2d3d;
-  --gold: #b8892a;
-  --gold-light: #d4a84b;
-  --gold-pale: #e8c97a;
+  --gold: #a38057;
+  --gold-light: #b8956b;
+  --gold-pale: #cda882;
   --cream: #f5f0e8;
   --white: #ffffff;
   --gray-soft: #8a9ab0;
+  --font-serif: 'Scaver', serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -64,7 +75,7 @@ body {
 .btn-gold:hover {
   background: linear-gradient(135deg, var(--gold-pale) 0%, var(--gold) 100%);
   transform: translateY(-1px);
-  box-shadow: 0 8px 25px rgba(184,137,42,0.4);
+  box-shadow: 0 8px 25px rgba(163,128,87,0.4);
 }
 
 .btn-outline {
@@ -91,8 +102,26 @@ body {
 /* Card hover */
 .card-hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
 }
 .card-hover:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+/* Custom select styling */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a38057' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem !important;
+  cursor: pointer;
+}
+
+/* Input / textarea / select focus state */
+input:focus, textarea:focus, select:focus {
+  border-color: rgba(163,128,87,0.7) !important;
+  box-shadow: 0 0 0 3px rgba(163,128,87,0.12);
 }

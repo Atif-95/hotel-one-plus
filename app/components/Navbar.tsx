@@ -38,7 +38,7 @@ export default function Navbar() {
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
       background: navBg,
       backdropFilter: scrolled ? 'blur(12px)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(184,137,42,0.2)' : 'none',
+      borderBottom: scrolled ? '1px solid rgba(163,128,87,0.2)' : 'none',
       transition: 'all 0.4s ease',
     }}>
       {/* Top bar — constrained width */}
@@ -52,11 +52,11 @@ export default function Navbar() {
               alt="Hotel One Plus"
               width={isMobile ? 38 : 48}
               height={isMobile ? 38 : 48}
-              style={{ borderRadius: '4px', border: '1px solid rgba(184,137,42,0.3)', flexShrink: 0 }}
+              style={{ borderRadius: '4px', border: '1px solid rgba(163,128,87,0.3)', flexShrink: 0 }}
             />
             <div style={{ minWidth: 0 }}>
               <div style={{
-                color: '#d4a84b',
+                color: '#b8956b',
                 fontSize: isMobile ? '0.78rem' : '1rem',
                 fontWeight: 700,
                 letterSpacing: '0.08em',
@@ -78,20 +78,20 @@ export default function Navbar() {
             <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
               {navLinks.map(l => (
                 <Link key={l.href} href={l.href} style={{
-                  color: '#e8c97a', textDecoration: 'none', fontSize: '0.78rem',
+                  color: '#cda882', textDecoration: 'none', fontSize: '0.78rem',
                   letterSpacing: '0.12em', textTransform: 'uppercase',
                   fontFamily: 'var(--font-sans)', fontWeight: 600,
                   transition: 'color 0.2s', whiteSpace: 'nowrap',
                 }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#ffffff')}
-                  onMouseLeave={e => (e.currentTarget.style.color = '#e8c97a')}
+                  onMouseLeave={e => (e.currentTarget.style.color = '#cda882')}
                 >
                   {l.label}
                 </Link>
               ))}
               <a href="https://wa.me/923111234567" target="_blank" rel="noopener noreferrer" style={{
                 display: 'flex', alignItems: 'center', gap: '0.4rem',
-                color: '#0d1b2a', background: 'linear-gradient(135deg, #b8892a, #d4a84b)',
+                color: '#0d1b2a', background: 'linear-gradient(135deg, #a38057, #b8956b)',
                 padding: '0.5rem 1.2rem', textDecoration: 'none', fontSize: '0.75rem',
                 letterSpacing: '0.06em', fontFamily: 'var(--font-sans)', fontWeight: 700,
                 whiteSpace: 'nowrap',
@@ -105,7 +105,7 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           {isMobile && (
             <button onClick={() => setOpen(v => !v)} style={{
-              background: 'none', border: 'none', color: '#d4a84b',
+              background: 'none', border: 'none', color: '#b8956b',
               cursor: 'pointer', padding: '0.5rem', flexShrink: 0,
             }}>
               {open ? <X size={26} /> : <Menu size={26} />}
@@ -118,16 +118,16 @@ export default function Navbar() {
       {isMobile && open && (
         <div style={{
           background: 'rgba(10,21,32,0.99)',
-          borderTop: '1px solid rgba(184,137,42,0.2)',
+          borderTop: '1px solid rgba(163,128,87,0.2)',
           padding: '0.5rem 1.5rem 1.5rem',
           width: '100%',
         }}>
           {navLinks.map(l => (
             <Link key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
-              display: 'block', color: '#e8c97a', textDecoration: 'none',
+              display: 'block', color: '#cda882', textDecoration: 'none',
               padding: '1rem 0', fontSize: '0.88rem', letterSpacing: '0.12em',
               textTransform: 'uppercase', fontFamily: 'var(--font-sans)',
-              borderBottom: '1px solid rgba(184,137,42,0.1)',
+              borderBottom: '1px solid rgba(163,128,87,0.1)',
             }}>
               {l.label}
             </Link>
@@ -136,7 +136,7 @@ export default function Navbar() {
             onClick={() => setOpen(false)}
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
-              color: '#0d1b2a', background: 'linear-gradient(135deg, #b8892a, #d4a84b)',
+              color: '#0d1b2a', background: 'linear-gradient(135deg, #a38057, #b8956b)',
               padding: '0.85rem', textDecoration: 'none', fontSize: '0.82rem',
               fontFamily: 'var(--font-sans)', fontWeight: 700, marginTop: '1.25rem',
               width: '100%',

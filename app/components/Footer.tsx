@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer style={{
       background: '#060e16',
-      borderTop: '1px solid rgba(184,137,42,0.2)',
+      borderTop: '1px solid rgba(163,128,87,0.2)',
       padding: '4rem 0 0',
     }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2rem' }}>
@@ -18,7 +18,7 @@ export default function Footer() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
               <Image src="/logo.jpeg" alt="Hotel One Plus" width={48} height={48} style={{ borderRadius: '4px' }} />
               <div>
-                <div style={{ color: '#d4a84b', fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'var(--font-sans)', fontSize: '0.95rem' }}>HOTEL ONE PLUS</div>
+                <div style={{ color: '#b8956b', fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'var(--font-sans)', fontSize: '0.95rem' }}>HOTEL ONE PLUS</div>
                 <div style={{ color: '#8a9ab0', fontSize: '0.65rem', letterSpacing: '0.15em', fontFamily: 'var(--font-sans)' }}>NARAN VALLEY</div>
               </div>
             </div>
@@ -55,12 +55,12 @@ export default function Footer() {
                 },
               ].map(s => (
                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" style={{
-                  width: '38px', height: '38px', border: '1px solid rgba(184,137,42,0.4)',
+                  width: '38px', height: '38px', border: '1px solid rgba(163,128,87,0.4)',
                   borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: '#d4a84b', textDecoration: 'none', transition: 'all 0.2s',
+                  color: '#b8956b', textDecoration: 'none', transition: 'all 0.2s',
                 }}
-                  onMouseEnter={e => { e.currentTarget.style.background = '#b8892a'; e.currentTarget.style.color = '#0d1b2a'; e.currentTarget.style.borderColor = '#b8892a'; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#d4a84b'; e.currentTarget.style.borderColor = 'rgba(184,137,42,0.4)'; }}
+                  onMouseEnter={e => { e.currentTarget.style.background = '#a38057'; e.currentTarget.style.color = '#0d1b2a'; e.currentTarget.style.borderColor = '#a38057'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#b8956b'; e.currentTarget.style.borderColor = 'rgba(163,128,87,0.4)'; }}
                 >
                   {s.icon}
                 </a>
@@ -70,7 +70,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 style={{ color: '#d4a84b', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'var(--font-sans)', marginBottom: '1.5rem' }}>
+            <h4 style={{ color: '#b8956b', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'var(--font-sans)', marginBottom: '1.5rem' }}>
               Quick Links
             </h4>
             {[
@@ -84,7 +84,7 @@ export default function Footer() {
                 display: 'block', color: '#8a9ab0', textDecoration: 'none',
                 fontSize: '0.9rem', marginBottom: '0.6rem', transition: 'color 0.2s',
               }}
-                onMouseEnter={e => (e.currentTarget.style.color = '#e8c97a')}
+                onMouseEnter={e => (e.currentTarget.style.color = '#cda882')}
                 onMouseLeave={e => (e.currentTarget.style.color = '#8a9ab0')}
               >
                 — {l.label}
@@ -94,7 +94,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 style={{ color: '#d4a84b', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'var(--font-sans)', marginBottom: '1.5rem' }}>
+            <h4 style={{ color: '#b8956b', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'var(--font-sans)', marginBottom: '1.5rem' }}>
               Contact Us
             </h4>
             {[
@@ -104,7 +104,7 @@ export default function Footer() {
               { icon: <Clock size={14} />, text: 'Check-in: 12PM | Check-out: 11AM' },
             ].map((item, i) => (
               <div key={i} style={{ display: 'flex', gap: '0.75rem', marginBottom: '1rem', alignItems: 'flex-start' }}>
-                <span style={{ color: '#b8892a', marginTop: '3px', flexShrink: 0 }}>{item.icon}</span>
+                <span style={{ color: '#a38057', marginTop: '3px', flexShrink: 0 }}>{item.icon}</span>
                 <span style={{ color: '#8a9ab0', fontSize: '0.88rem', lineHeight: 1.5 }}>{item.text}</span>
               </div>
             ))}
@@ -112,7 +112,7 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h4 style={{ color: '#d4a84b', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'var(--font-sans)', marginBottom: '1.5rem' }}>
+            <h4 style={{ color: '#b8956b', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontFamily: 'var(--font-sans)', marginBottom: '1.5rem' }}>
               Stay Updated
             </h4>
             <p style={{ color: '#8a9ab0', fontSize: '0.88rem', marginBottom: '1rem', lineHeight: 1.6 }}>
@@ -120,7 +120,7 @@ export default function Footer() {
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <input type="email" placeholder="Your email address" style={{
-                background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(184,137,42,0.3)',
+                background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(163,128,87,0.3)',
                 color: '#f5f0e8', padding: '0.7rem 1rem', fontSize: '0.85rem',
                 outline: 'none', width: '100%',
               }} />
@@ -131,7 +131,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div style={{
-          borderTop: '1px solid rgba(184,137,42,0.15)',
+          borderTop: '1px solid rgba(163,128,87,0.15)',
           padding: '1.5rem 0',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           flexWrap: 'wrap', gap: '0.5rem',

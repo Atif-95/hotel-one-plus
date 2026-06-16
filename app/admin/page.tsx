@@ -31,18 +31,18 @@ export default function AdminLoginPage() {
       minHeight: '100vh', background: '#0a1015',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       padding: '2rem',
-      backgroundImage: 'radial-gradient(ellipse at top, rgba(184,137,42,0.06) 0%, transparent 60%)',
+      backgroundImage: 'radial-gradient(ellipse at top, rgba(163,128,87,0.06) 0%, transparent 60%)',
     }}>
       <div style={{ width: '100%', maxWidth: '420px' }}>
         {/* Logo */}
         <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <Image src="/logo.jpeg" alt="Hotel One Plus" width={80} height={80} style={{ borderRadius: '8px', border: '2px solid rgba(184,137,42,0.4)', marginBottom: '1rem' }} />
-          <h1 style={{ color: '#e8c97a', fontSize: '1.2rem', fontFamily: 'var(--font-sans)', letterSpacing: '0.15em', fontWeight: 700 }}>HOTEL ONE PLUS</h1>
+          <Image src="/logo.jpeg" alt="Hotel One Plus" width={80} height={80} style={{ borderRadius: '8px', border: '2px solid rgba(163,128,87,0.4)', marginBottom: '1rem' }} />
+          <h1 style={{ color: '#cda882', fontSize: '1.2rem', fontFamily: 'var(--font-sans)', letterSpacing: '0.15em', fontWeight: 700 }}>HOTEL ONE PLUS</h1>
           <p style={{ color: '#8a9ab0', fontSize: '0.8rem', fontFamily: 'var(--font-sans)', letterSpacing: '0.1em' }}>CRM ADMIN PORTAL</p>
         </div>
 
         {/* Card */}
-        <div style={{ background: '#162032', border: '1px solid rgba(184,137,42,0.25)', padding: '2.5rem' }}>
+        <div style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.25)', padding: '2.5rem' }}>
           <h2 style={{ color: '#f5f0e8', fontSize: '1.3rem', fontWeight: 400, marginBottom: '0.4rem' }}>Welcome Back</h2>
           <p style={{ color: '#8a9ab0', fontSize: '0.85rem', marginBottom: '2rem' }}>Sign in to manage your hotel.</p>
 
@@ -53,14 +53,14 @@ export default function AdminLoginPage() {
           )}
 
           <div style={{ marginBottom: '1.25rem' }}>
-            <label style={{ display: 'block', color: '#d4a84b', fontSize: '0.65rem', letterSpacing: '0.2em', fontFamily: 'var(--font-sans)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Username</label>
+            <label style={{ display: 'block', color: '#b8956b', fontSize: '0.65rem', letterSpacing: '0.2em', fontFamily: 'var(--font-sans)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Username</label>
             <div style={{ position: 'relative' }}>
               <User size={15} color="#8a9ab0" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)' }} />
               <input type="text" value={username} onChange={e => setUsername(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && handleLogin()}
                 placeholder="admin" style={{
                   width: '100%', background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(184,137,42,0.3)', color: '#f5f0e8',
+                  border: '1px solid rgba(163,128,87,0.3)', color: '#f5f0e8',
                   padding: '0.75rem 1rem 0.75rem 2.75rem', fontSize: '0.9rem', outline: 'none',
                 }}
               />
@@ -68,14 +68,14 @@ export default function AdminLoginPage() {
           </div>
 
           <div style={{ marginBottom: '2rem' }}>
-            <label style={{ display: 'block', color: '#d4a84b', fontSize: '0.65rem', letterSpacing: '0.2em', fontFamily: 'var(--font-sans)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Password</label>
+            <label style={{ display: 'block', color: '#b8956b', fontSize: '0.65rem', letterSpacing: '0.2em', fontFamily: 'var(--font-sans)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Password</label>
             <div style={{ position: 'relative' }}>
               <Lock size={15} color="#8a9ab0" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)' }} />
               <input type={showPw ? 'text' : 'password'} value={password} onChange={e => setPassword(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && handleLogin()}
                 placeholder="••••••••" style={{
                   width: '100%', background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(184,137,42,0.3)', color: '#f5f0e8',
+                  border: '1px solid rgba(163,128,87,0.3)', color: '#f5f0e8',
                   padding: '0.75rem 2.75rem 0.75rem 2.75rem', fontSize: '0.9rem', outline: 'none',
                 }}
               />
