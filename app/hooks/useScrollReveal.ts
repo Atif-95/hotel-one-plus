@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 
-export function useScrollReveal() {
+export function useScrollReveal(deps: unknown[] = []) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -13,7 +13,18 @@ export function useScrollReveal() {
       },
       { threshold: 0.12 }
     );
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+
+    // Small delay so dynamically rendered elements are in the DOM
+    const timer = setTimeout(() => {
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+        observer.observe(el);
+      });
+    }, 50);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
 }

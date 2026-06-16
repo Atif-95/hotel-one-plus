@@ -164,3 +164,52 @@ input:focus, textarea:focus, select:focus {
   0%, 100% { box-shadow: 0 0 20px rgba(163,128,87,0.3); }
   50% { box-shadow: 0 0 40px rgba(163,128,87,0.6); }
 }
+
+/* Page entrance */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-anim-1 { animation: heroFadeUp 0.9s ease forwards; animation-delay: 0.1s; opacity: 0; }
+.hero-anim-2 { animation: heroFadeUp 0.9s ease forwards; animation-delay: 0.3s; opacity: 0; }
+.hero-anim-3 { animation: heroFadeUp 0.9s ease forwards; animation-delay: 0.5s; opacity: 0; }
+.hero-anim-4 { animation: heroFadeUp 0.9s ease forwards; animation-delay: 0.7s; opacity: 0; }
+.hero-anim-5 { animation: heroFadeIn 0.9s ease forwards; animation-delay: 0.9s; opacity: 0; }
+
+/* Image zoom on card hover */
+.img-zoom { overflow: hidden; }
+.img-zoom img { transition: transform 0.6s ease !important; }
+.img-zoom:hover img { transform: scale(1.08) !important; }
+
+/* Loading screen */
+@keyframes loadFadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; }
+}
+@keyframes logoReveal {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes barGrow {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* Typewriter cursor blink */
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Subtle pan on hero image */
+@keyframes heroPan {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+.hero-pan { animation: heroPan 8s ease forwards; }

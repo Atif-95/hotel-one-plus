@@ -17,7 +17,7 @@ export default function RoomsPage() {
   const [rooms, setRooms] = useState<Room[]>([]);
   const [filter, setFilter] = useState('All');
 
-  useScrollReveal();
+  useScrollReveal([rooms]);
 
   useEffect(() => { fetch('/db.json').then(r => r.json()).then((d: { rooms: Room[] }) => setRooms(d.rooms)); }, []);
 
@@ -65,7 +65,7 @@ export default function RoomsPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 1fr))', gap: '2rem' }}>
             {filtered.map(room => (
               <div key={room.id} className="card-hover reveal" style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.15)', overflow: 'hidden' }}>
-                <div style={{ position: 'relative', height: '240px' }}>
+                <div className="img-zoom" style={{ position: 'relative', height: '240px' }}>
                   <Image src={room.image} alt={room.name} fill style={{ objectFit: 'cover' }} />
                   {/* Gradient overlay with type badge */}
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(13,27,42,0.7) 0%, transparent 55%)', zIndex: 1 }} />
