@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Star, Users, Maximize, Bed, Check, MessageCircle } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 interface Room {
   id: number; name: string; type: string; price: number; capacity: number;
@@ -15,6 +16,8 @@ const FILTERS = ['All', 'Standard', 'Deluxe', 'Suite', 'Premium'];
 export default function RoomsPage() {
   const [rooms, setRooms] = useState<Room[]>([]);
   const [filter, setFilter] = useState('All');
+
+  useScrollReveal();
 
   useEffect(() => { fetch('/db.json').then(r => r.json()).then((d: { rooms: Room[] }) => setRooms(d.rooms)); }, []);
 
@@ -35,19 +38,24 @@ export default function RoomsPage() {
 
       {/* Filters */}
       <section style={{ background: '#0a1520', padding: '1.5rem 0', borderBottom: '1px solid rgba(163,128,87,0.15)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-          {FILTERS.map(f => (
-            <button key={f} onClick={() => setFilter(f)} style={{
-              background: filter === f ? 'linear-gradient(135deg,#a38057,#b8956b)' : 'transparent',
-              border: '1px solid rgba(163,128,87,0.4)', color: filter === f ? '#0d1b2a' : '#b8956b',
-              padding: '0.5rem 1.75rem', cursor: 'pointer', fontSize: '0.72rem',
-              letterSpacing: '0.12em', fontFamily: 'var(--font-sans)', fontWeight: 600,
-              textTransform: 'uppercase', transition: 'all 0.25s ease',
-              borderRadius: '2rem',
-            }}>
-              {f}
-            </button>
-          ))}
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{
+            display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center',
+            background: 'rgba(255,255,255,0.03)', borderRadius: '4px', padding: '0.75rem 1rem',
+          }}>
+            {FILTERS.map(f => (
+              <button key={f} onClick={() => setFilter(f)} style={{
+                background: filter === f ? 'linear-gradient(135deg,#a38057,#b8956b)' : 'transparent',
+                border: '1px solid rgba(163,128,87,0.4)', color: filter === f ? '#0d1b2a' : '#b8956b',
+                padding: '0.5rem 1.75rem', cursor: 'pointer', fontSize: '0.72rem',
+                letterSpacing: '0.12em', fontFamily: 'var(--font-sans)', fontWeight: 600,
+                textTransform: 'uppercase', transition: 'all 0.25s ease',
+                borderRadius: '2rem',
+              }}>
+                {f}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -56,13 +64,15 @@ export default function RoomsPage() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 1fr))', gap: '2rem' }}>
             {filtered.map(room => (
-              <div key={room.id} className="card-hover" style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.15)', overflow: 'hidden' }}>
+              <div key={room.id} className="card-hover reveal" style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.15)', overflow: 'hidden' }}>
                 <div style={{ position: 'relative', height: '240px' }}>
                   <Image src={room.image} alt={room.name} fill style={{ objectFit: 'cover' }} />
-                  <div style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'rgba(13,27,42,0.85)', border: '1px solid rgba(163,128,87,0.4)', color: '#b8956b', fontSize: '0.65rem', padding: '0.3rem 0.8rem', fontFamily: 'var(--font-sans)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                  {/* Gradient overlay with type badge */}
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(13,27,42,0.7) 0%, transparent 55%)', zIndex: 1 }} />
+                  <div style={{ position: 'absolute', bottom: '0.75rem', left: '1rem', zIndex: 2, background: 'rgba(13,27,42,0.85)', border: '1px solid rgba(163,128,87,0.4)', color: '#b8956b', fontSize: '0.65rem', padding: '0.3rem 0.8rem', fontFamily: 'var(--font-sans)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                     {room.type}
                   </div>
-                  <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: room.available ? 'rgba(34,139,34,0.85)' : 'rgba(180,50,50,0.85)', color: '#fff', fontSize: '0.65rem', padding: '0.3rem 0.8rem', fontFamily: 'var(--font-sans)', fontWeight: 700 }}>
+                  <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 2, background: room.available ? 'rgba(34,139,34,0.85)' : 'rgba(180,50,50,0.85)', color: '#fff', fontSize: '0.65rem', padding: '0.3rem 0.8rem', fontFamily: 'var(--font-sans)', fontWeight: 700 }}>
                     {room.available ? '✓ Available' : '✗ Booked'}
                   </div>
                 </div>

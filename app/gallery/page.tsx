@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 interface GalleryItem { id: number; url: string; caption: string; category: string; }
 
@@ -11,6 +12,9 @@ export default function GalleryPage() {
   const [gallery, setGallery] = useState<GalleryItem[]>([]);
   const [cat, setCat] = useState('All');
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
+  useScrollReveal();
 
   useEffect(() => { fetch('/db.json').then(r => r.json()).then((d: { gallery: GalleryItem[] }) => setGallery(d.gallery)); }, []);
 
@@ -54,23 +58,28 @@ export default function GalleryPage() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ columns: '2 280px', gap: '1rem' }}>
             {filtered.map((item, idx) => (
-              <div key={item.id} style={{ breakInside: 'avoid', marginBottom: '1rem', position: 'relative', overflow: 'hidden', cursor: 'pointer' }}
-                onClick={() => setLightbox(idx)}
+              <div key={item.id} style={{
+                breakInside: 'avoid', marginBottom: '1rem', position: 'relative', overflow: 'hidden', cursor: 'pointer',
+                transition: 'box-shadow 0.3s ease',
+              }}
                 className="card-hover"
+                onClick={() => setLightbox(idx)}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
               >
                 <Image src={item.url} alt={item.caption} width={600} height={400}
-                  style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.4s' }}
+                  style={{
+                    width: '100%', height: 'auto', display: 'block',
+                    transition: 'transform 0.4s ease',
+                    transform: hoveredIdx === idx ? 'scale(1.03)' : 'scale(1)',
+                  }}
                 />
                 <div style={{
-                  position: 'absolute', inset: 0, background: 'rgba(13,27,42,0)',
+                  position: 'absolute', inset: 0,
+                  background: hoveredIdx === idx ? 'rgba(13,27,42,0.55)' : 'rgba(13,27,42,0)',
                   transition: 'background 0.3s', display: 'flex', alignItems: 'flex-end',
-                }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(13,27,42,0.55)'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(13,27,42,0)'; }}
-                >
-                  <div style={{ padding: '1rem', opacity: 0, transition: 'opacity 0.3s' }}
-                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; (e.currentTarget.parentElement as HTMLElement).style.background = 'rgba(13,27,42,0.55)'; }}
-                  >
+                }}>
+                  <div style={{ padding: '1rem', opacity: hoveredIdx === idx ? 1 : 0, transition: 'opacity 0.3s' }}>
                     <p style={{ color: '#f5f0e8', fontSize: '0.85rem', fontWeight: 600 }}>{item.caption}</p>
                     <p style={{ color: '#b8956b', fontSize: '0.7rem', letterSpacing: '0.1em', fontFamily: 'var(--font-sans)', textTransform: 'uppercase' }}>{item.category}</p>
                   </div>

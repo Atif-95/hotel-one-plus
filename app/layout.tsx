@@ -3,11 +3,11 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
-import { Josefin_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 
-const josefin = Josefin_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={josefin.variable}>
+    <html lang="en" className={inter.variable}>
       <body>
         <Navbar />
         <main>{children}</main>
