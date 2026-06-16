@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0d1b2a;
+  --navy-light: #162032;
+  --navy-mid: #1e2d3d;
+  --gold: #b8892a;
+  --gold-light: #d4a84b;
+  --gold-pale: #e8c97a;
+  --cream: #f5f0e8;
+  --white: #ffffff;
+  --gray-soft: #8a9ab0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  background: var(--navy);
+  color: var(--cream);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.font-sans { font-family: var(--font-sans); }
+
+/* Gold gradient text */
+.gold-text {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-pale) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* Gold divider */
+.gold-divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto;
+}
+
+/* Button styles */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: var(--navy);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-sans);
+}
+.btn-gold:hover {
+  background: linear-gradient(135deg, var(--gold-pale) 0%, var(--gold) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(184,137,42,0.4);
+}
+
+.btn-outline {
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  background: transparent;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-sans);
+}
+.btn-outline:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+/* Section padding */
+.section-pad { padding: 5rem 0; }
+
+/* Card hover */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}

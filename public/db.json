@@ -1,0 +1,154 @@
+{
+  "hotel": {
+    "name": "Naran Grand Hotel",
+    "tagline": "Where the Mountains Meet Luxury",
+    "location": "Naran Valley, Kaghan, Pakistan",
+    "phone": "+92-311-1234567",
+    "email": "info@narangrandhotel.com",
+    "address": "Main Naran Road, Naran Valley, KPK, Pakistan",
+    "description": "Nestled in the heart of Naran Valley at an elevation of 8,200 feet, Naran Grand Hotel offers an unparalleled mountain retreat experience. Wake up to breathtaking views of the Himalayan peaks and the pristine Kunhar River.",
+    "checkIn": "12:00 PM",
+    "checkOut": "11:00 AM",
+    "rating": 4.8,
+    "totalReviews": 326
+  },
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Standard Mountain View",
+      "type": "standard",
+      "price": 8500,
+      "currency": "PKR",
+      "capacity": 2,
+      "size": "280 sq ft",
+      "bed": "1 Queen Bed",
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800",
+      "amenities": ["WiFi", "TV", "AC", "Mountain View", "Private Bathroom", "Room Service"],
+      "description": "Cozy room with stunning mountain views, perfect for couples seeking a peaceful retreat."
+    },
+    {
+      "id": 2,
+      "name": "Deluxe River View",
+      "type": "deluxe",
+      "price": 12500,
+      "currency": "PKR",
+      "capacity": 2,
+      "size": "380 sq ft",
+      "bed": "1 King Bed",
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800",
+      "amenities": ["WiFi", "TV", "AC", "River View", "Balcony", "Mini Bar", "Private Bathroom", "Room Service"],
+      "description": "Spacious deluxe room overlooking the Kunhar River with a private balcony for morning tea."
+    },
+    {
+      "id": 3,
+      "name": "Family Suite",
+      "type": "suite",
+      "price": 22000,
+      "currency": "PKR",
+      "capacity": 4,
+      "size": "600 sq ft",
+      "bed": "2 Queen Beds",
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800",
+      "amenities": ["WiFi", "TV", "AC", "Panoramic View", "Balcony", "Mini Bar", "Living Area", "2 Bathrooms", "Room Service", "Kitchenette"],
+      "description": "Luxurious suite ideal for families, featuring separate living area with panoramic valley views."
+    },
+    {
+      "id": 4,
+      "name": "Premium Valley Suite",
+      "type": "premium",
+      "price": 35000,
+      "currency": "PKR",
+      "capacity": 2,
+      "size": "750 sq ft",
+      "bed": "1 King Bed + Jacuzzi",
+      "available": false,
+      "image": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800",
+      "amenities": ["WiFi", "TV", "AC", "Panoramic View", "Private Balcony", "Jacuzzi", "Bar Cabinet", "Living Room", "Dining Area", "Butler Service", "Fireplace"],
+      "description": "Our most exclusive suite with a private jacuzzi, fireplace and sweeping 270° valley panorama."
+    },
+    {
+      "id": 5,
+      "name": "Twin Sharing Room",
+      "type": "standard",
+      "price": 7000,
+      "currency": "PKR",
+      "capacity": 2,
+      "size": "260 sq ft",
+      "bed": "2 Single Beds",
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800",
+      "amenities": ["WiFi", "TV", "Heater", "Mountain View", "Private Bathroom", "Room Service"],
+      "description": "Comfortable twin room perfect for friends or colleagues exploring the Naran Valley together."
+    },
+    {
+      "id": 6,
+      "name": "Honeymoon Suite",
+      "type": "suite",
+      "price": 28000,
+      "currency": "PKR",
+      "capacity": 2,
+      "size": "500 sq ft",
+      "bed": "1 Super King Bed",
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800",
+      "amenities": ["WiFi", "TV", "AC", "River & Mountain View", "Private Balcony", "Rose Petal Service", "Candle Dinner Arrangement", "Jacuzzi", "Minibar", "Couple Spa Access"],
+      "description": "Romantic suite designed for newlyweds, with breathtaking views, rose petal service and exclusive spa access."
+    }
+  ],
+  "amenities": [
+    { "icon": "Mountain", "title": "Mountain Trekking", "desc": "Guided treks to Saiful Malook & beyond" },
+    { "icon": "Utensils", "title": "Restaurant & Dining", "desc": "Authentic Pakistani & Continental cuisine" },
+    { "icon": "Flame", "title": "Bonfire Evenings", "desc": "Nightly bonfires under the starlit sky" },
+    { "icon": "Car", "title": "Jeep Safari", "desc": "Off-road adventure tours to remote spots" },
+    { "icon": "Sparkles", "title": "Spa & Wellness", "desc": "Rejuvenating treatments with mountain herbs" },
+    { "icon": "Wifi", "title": "Free High-Speed WiFi", "desc": "Reliable connectivity throughout the hotel" },
+    { "icon": "Fish", "title": "River Fishing", "desc": "Trout fishing in the Kunhar River" },
+    { "icon": "ParkingSquare", "title": "Free Parking", "desc": "Secure parking for all guests" }
+  ],
+  "gallery": [
+    { "id": 1, "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800", "caption": "Naran Valley Sunrise", "category": "scenery" },
+    { "id": 2, "url": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800", "caption": "Hotel Exterior", "category": "hotel" },
+    { "id": 3, "url": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800", "caption": "Deluxe Room Interior", "category": "rooms" },
+    { "id": 4, "url": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800", "caption": "Lake Saiful Malook", "category": "scenery" },
+    { "id": 5, "url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800", "caption": "Hotel Restaurant", "category": "dining" },
+    { "id": 6, "url": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800", "caption": "Family Suite", "category": "rooms" },
+    { "id": 7, "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800", "caption": "Mountain Trek Trail", "category": "activities" },
+    { "id": 8, "url": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800", "caption": "Honeymoon Suite", "category": "rooms" },
+    { "id": 9, "url": "https://images.unsplash.com/photo-1517840901100-8179e982acb7?w=800", "caption": "Kunhar River View", "category": "scenery" }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Ahmed Raza",
+      "city": "Lahore",
+      "rating": 5,
+      "comment": "Absolutely breathtaking experience! The views from our room were incredible. Staff was warm and welcoming. Will definitely return next summer.",
+      "date": "August 2024"
+    },
+    {
+      "id": 2,
+      "name": "Sara & Kamran",
+      "city": "Islamabad",
+      "rating": 5,
+      "comment": "Our honeymoon here was a dream come true. The suite was beautiful, the bonfire evening was magical, and the food was delicious. 10/10!",
+      "date": "July 2024"
+    },
+    {
+      "id": 3,
+      "name": "The Khan Family",
+      "city": "Karachi",
+      "rating": 4,
+      "comment": "Wonderful family trip! Kids loved the jeep safari and fishing. Rooms were spacious and clean. Restaurant serves amazing BBQ.",
+      "date": "September 2024"
+    }
+  ],
+  "bookings": [],
+  "admin": {
+    "username": "admin",
+    "password": "naran2024",
+    "name": "Hotel Manager"
+  }
+}
