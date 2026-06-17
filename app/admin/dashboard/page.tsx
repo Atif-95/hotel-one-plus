@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import {
-  LayoutDashboard, BedDouble, Users, User, Star, Settings, LogOut,
-  Plus, Pencil, Trash2, Eye, Check, X, Menu, ChevronRight
+  LayoutDashboard, BedDouble, User, Star, Settings, LogOut,
+  Plus, Pencil, Trash2, Eye, Menu, ChevronRight
 } from 'lucide-react';
 
 interface Room {
@@ -29,8 +29,7 @@ interface Booking {
 const NAV = [
   { key: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard size={18} /> },
   { key: 'rooms', label: 'Rooms', icon: <BedDouble size={18} /> },
-  { key: 'bookings', label: 'Bookings', icon: <Users size={18} /> },
-  { key: 'reviews', label: 'Reviews', icon: <Star size={18} /> },
+{ key: 'reviews', label: 'Reviews', icon: <Star size={18} /> },
 ];
 
 const SAMPLE_BOOKINGS: Booking[] = [
@@ -64,12 +63,6 @@ export default function AdminDashboard() {
     if (!db) return;
     const updated = db.rooms.map(r => r.id === id ? { ...r, available: !r.available } : r);
     setDb({ ...db, rooms: updated });
-  };
-  const updateBookingStatus = (id: number, status: 'confirmed' | 'cancelled') => {
-    setBookings(prev => prev.map(b => b.id === id ? { ...b, status } : b));
-  };
-  const deleteBooking = (id: number) => {
-    if (confirm('Delete this booking?')) setBookings(prev => prev.filter(b => b.id !== id));
   };
   const addRoom = () => {
     if (!db || !newRoom.name || !newRoom.price) { alert('Fill required fields'); return; }
@@ -262,62 +255,6 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                 ))}
-              </div>
-            </div>
-          )}
-
-          {/* ── BOOKINGS ── */}
-          {tab === 'bookings' && (
-            <div>
-              <h2 style={{ color: '#f5f0e8', fontSize: '1.4rem', fontWeight: 400, marginBottom: '1.5rem' }}>Bookings Management</h2>
-              <div style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.15)', overflowX: 'auto' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '700px' }}>
-                  <thead>
-                    <tr style={{ borderBottom: '1px solid rgba(163,128,87,0.2)' }}>
-                      {['Guest', 'Room', 'Check-in', 'Check-out', 'Guests', 'Status', 'Actions'].map(h => (
-                        <th key={h} style={{ padding: '1rem', textAlign: 'left', color: '#b8956b', fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase', background: 'rgba(163,128,87,0.05)' }}>{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {bookings.map(b => (
-                      <tr key={b.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)', transition: 'background 0.2s' }}>
-                        <td style={{ padding: '1rem' }}>
-                          <div style={{ color: '#f5f0e8', fontSize: '0.85rem', fontWeight: 600 }}>{b.guestName}</div>
-                          <div style={{ color: '#8a9ab0', fontSize: '0.75rem' }}>{b.phone}</div>
-                        </td>
-                        <td style={{ padding: '1rem', color: '#8a9ab0', fontSize: '0.85rem' }}>{b.roomName}</td>
-                        <td style={{ padding: '1rem', color: '#8a9ab0', fontSize: '0.82rem' }}>{b.checkIn}</td>
-                        <td style={{ padding: '1rem', color: '#8a9ab0', fontSize: '0.82rem' }}>{b.checkOut}</td>
-                        <td style={{ padding: '1rem', color: '#8a9ab0', fontSize: '0.82rem', textAlign: 'center' }}>{b.guests}</td>
-                        <td style={{ padding: '1rem' }}>
-                          <span style={{
-                            background: b.status === 'confirmed' ? 'rgba(76,175,80,0.15)' : b.status === 'pending' ? 'rgba(255,152,0,0.15)' : 'rgba(244,67,54,0.15)',
-                            color: b.status === 'confirmed' ? '#4caf50' : b.status === 'pending' ? '#ff9800' : '#f44336',
-                            padding: '0.25rem 0.7rem', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em',
-                          }}>{b.status}</span>
-                        </td>
-                        <td style={{ padding: '1rem' }}>
-                          <div style={{ display: 'flex', gap: '0.4rem' }}>
-                            {b.status === 'pending' && (
-                              <>
-                                <button onClick={() => updateBookingStatus(b.id, 'confirmed')} style={{ background: 'rgba(76,175,80,0.15)', border: '1px solid rgba(76,175,80,0.3)', color: '#4caf50', padding: '0.3rem 0.5rem', cursor: 'pointer' }} title="Confirm">
-                                  <Check size={13} />
-                                </button>
-                                <button onClick={() => updateBookingStatus(b.id, 'cancelled')} style={{ background: 'rgba(244,67,54,0.15)', border: '1px solid rgba(244,67,54,0.3)', color: '#f44336', padding: '0.3rem 0.5rem', cursor: 'pointer' }} title="Cancel">
-                                  <X size={13} />
-                                </button>
-                              </>
-                            )}
-                            <button onClick={() => deleteBooking(b.id)} style={{ background: 'rgba(244,67,54,0.1)', border: '1px solid rgba(244,67,54,0.2)', color: '#f44336', padding: '0.3rem 0.5rem', cursor: 'pointer' }} title="Delete">
-                              <Trash2 size={13} />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
               </div>
             </div>
           )}

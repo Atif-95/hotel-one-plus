@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Star, ArrowRight, Mountain, Utensils, Flame, Car, Sparkles, Wifi, Fish, ParkingSquare } from 'lucide-react';
+import { Star, ArrowRight, Mountain, Utensils, Flame, Car, Sparkles, Wifi, Fish, ParkingSquare, CalendarDays, Users } from 'lucide-react';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 interface Room { id:number; name:string; price:number; bed:string; image:string; amenities:string[]; description:string; available:boolean; }
@@ -91,24 +91,52 @@ export default function HomePage() {
       </section>
 
       {/* BOOKING BAR */}
-      <section style={{background:'#0a1520',borderTop:'2px solid rgba(163,128,87,0.35)',borderBottom:'1px solid rgba(163,128,87,0.2)',padding:'2rem 0'}}>
-        <div style={{maxWidth:'1100px',margin:'0 auto',padding:'0 2rem'}}>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(160px,1fr))',gap:'1rem',alignItems:'end'}}>
-            {[{label:'Check In',type:'date'},{label:'Check Out',type:'date'}].map(f=>(
-              <div key={f.label}>
-                <label style={{display:'block',color:'#b8956b',fontSize:'0.65rem',letterSpacing:'0.2em',fontFamily:'var(--font-sans)',marginBottom:'0.5rem',textTransform:'uppercase'}}>{f.label}</label>
-                <input type={f.type} style={{width:'100%',background:'rgba(255,255,255,0.04)',border:'1px solid rgba(163,128,87,0.3)',color:'#f5f0e8',padding:'0.75rem 1rem',fontSize:'0.9rem',outline:'none',colorScheme:'dark',cursor:'pointer',transition:'border-color 0.2s'}}/>
+      <section style={{background:'#060d16',padding:'2.5rem 2rem'}}>
+        <div style={{maxWidth:'1020px',margin:'0 auto'}}>
+          <div style={{background:'#0d1b2a',border:'1px solid rgba(163,128,87,0.25)',borderTop:'3px solid #a38057',padding:'2rem 2.5rem',boxShadow:'0 24px 64px rgba(0,0,0,0.55)'}}>
+
+            {/* Panel header */}
+            <div style={{display:'flex',alignItems:'flex-start',justifyContent:'space-between',marginBottom:'1.5rem',flexWrap:'wrap',gap:'1rem'}}>
+              <div>
+                <p style={{color:'#a38057',fontSize:'0.62rem',letterSpacing:'0.3em',fontFamily:'var(--font-sans)',textTransform:'uppercase',marginBottom:'0.3rem'}}>Plan Your Visit</p>
+                <h3 style={{color:'#f5f0e8',fontSize:'1.25rem',fontWeight:400,letterSpacing:'0.02em'}}>Reserve Your Stay</h3>
               </div>
-            ))}
-            <div>
-              <label style={{display:'block',color:'#b8956b',fontSize:'0.65rem',letterSpacing:'0.2em',fontFamily:'var(--font-sans)',marginBottom:'0.5rem',textTransform:'uppercase'}}>Guests</label>
-              <select value={guests} onChange={e=>setGuests(e.target.value)} style={{width:'100%',background:'#0d1b2a',border:'1px solid rgba(163,128,87,0.3)',color:'#f5f0e8',padding:'0.75rem 1rem',fontSize:'0.9rem',outline:'none',transition:'border-color 0.2s'}}>
-                {['1','2','3','4','5','6+'].map(n=><option key={n}>{n} Guest{n!=='1'?'s':''}</option>)}
-              </select>
+              <div style={{display:'flex',gap:'1.75rem',paddingTop:'0.25rem'}}>
+                {[{v:'24/7',l:'Service'}].map(s=>(
+                  <div key={s.l} style={{textAlign:'center'}}>
+                    <div style={{color:'#cda882',fontSize:'0.88rem',fontWeight:700,fontFamily:'var(--font-sans)'}}>{s.v}</div>
+                    <div style={{color:'#8a9ab0',fontSize:'0.58rem',letterSpacing:'0.15em',textTransform:'uppercase',fontFamily:'var(--font-sans)'}}>{s.l}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <Link href="/rooms" className="btn-gold" style={{display:'block',textAlign:'center',textDecoration:'none',padding:'0.82rem 1rem'}}>
-              Check Availability
-            </Link>
+
+            {/* Gold divider */}
+            <div style={{height:'1px',background:'linear-gradient(to right,rgba(163,128,87,0.6),rgba(163,128,87,0.1))',marginBottom:'1.75rem'}} />
+
+            {/* Fields */}
+            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))',gap:'1rem',alignItems:'end'}}>
+              {[{label:'Check In'},{label:'Check Out'}].map(f=>(
+                <div key={f.label}>
+                  <label style={{display:'flex',alignItems:'center',gap:'0.4rem',color:'#b8956b',fontSize:'0.62rem',letterSpacing:'0.2em',fontFamily:'var(--font-sans)',marginBottom:'0.5rem',textTransform:'uppercase'}}>
+                    <CalendarDays size={11}/> {f.label}
+                  </label>
+                  <input type="date" style={{width:'100%',background:'rgba(255,255,255,0.03)',border:'1px solid rgba(163,128,87,0.2)',borderBottom:'2px solid rgba(163,128,87,0.5)',color:'#f5f0e8',padding:'0.8rem 1rem',fontSize:'0.88rem',outline:'none',colorScheme:'dark',cursor:'pointer'}}/>
+                </div>
+              ))}
+              <div>
+                <label style={{display:'flex',alignItems:'center',gap:'0.4rem',color:'#b8956b',fontSize:'0.62rem',letterSpacing:'0.2em',fontFamily:'var(--font-sans)',marginBottom:'0.5rem',textTransform:'uppercase'}}>
+                  <Users size={11}/> Guests
+                </label>
+                <select value={guests} onChange={e=>setGuests(e.target.value)} style={{width:'100%',background:'rgba(255,255,255,0.03)',border:'1px solid rgba(163,128,87,0.2)',borderBottom:'2px solid rgba(163,128,87,0.5)',color:'#f5f0e8',padding:'0.8rem 1rem',fontSize:'0.88rem',outline:'none',cursor:'pointer'}}>
+                  {['1','2','3','4','5','6+'].map(n=><option key={n} style={{background:'#0d1b2a'}}>{n} Guest{n!=='1'?'s':''}</option>)}
+                </select>
+              </div>
+              <Link href="/rooms" className="btn-gold" style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'0.4rem',textDecoration:'none',padding:'0.85rem 1.25rem',fontSize:'0.78rem',letterSpacing:'0.08em',whiteSpace:'nowrap'}}>
+                Check Availability <ArrowRight size={13}/>
+              </Link>
+            </div>
+
           </div>
         </div>
       </section>
