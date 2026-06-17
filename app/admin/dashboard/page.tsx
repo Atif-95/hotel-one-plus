@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import LoadingScreen from '../../components/LoadingScreen';
 import {
   LayoutDashboard, BedDouble, User, Star, Settings, LogOut,
   Plus, Pencil, Trash2, Eye, Menu, ChevronRight
@@ -67,11 +68,7 @@ export default function AdminDashboard() {
     setDb({ ...db, rooms: db.rooms.filter(r => r.id !== id) });
   };
 
-  if (!db) return (
-    <div style={{ minHeight: '100vh', background: '#0a1015', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <p style={{ color: '#b8956b', fontFamily: 'var(--font-sans)', letterSpacing: '0.2em' }}>LOADING DASHBOARD...</p>
-    </div>
-  );
+  if (!db) return <LoadingScreen />;
 
   const available = db.rooms.filter(r => r.available).length;
   const booked = db.rooms.length - available;
