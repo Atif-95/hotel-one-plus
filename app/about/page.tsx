@@ -3,9 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Mountain, Heart, Shield, Star } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useCounter } from '../hooks/useCounter';
 
 export default function AboutPage() {
   useScrollReveal();
+  const statYears = useCounter(12);
+  const statGuests = useCounter(5000);
+  const statRooms = useCounter(6);
 
   const values = [
     { icon: <Mountain size={28} />, title: 'Mountain Soul', desc: 'Every corner of our hotel is designed to connect you with the raw beauty of the Himalayas.' },
@@ -18,13 +22,6 @@ export default function AboutPage() {
     { name: 'Mr. Asif Malik', role: 'General Manager', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300' },
     { name: 'Ms. Huma Baig', role: 'Head Chef', img: 'https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=300' },
     { name: 'Mr. Tariq Ahmed', role: 'Guest Relations', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300' },
-  ];
-
-  const stats = [
-    { num: '12+', label: 'Years of Excellence' },
-    { num: '5,000+', label: 'Happy Guests' },
-    { num: '4.8★', label: 'Average Rating' },
-    { num: '6', label: 'Room Categories' },
   ];
 
   return (
@@ -73,17 +70,38 @@ export default function AboutPage() {
       {/* Stats */}
       <section style={{ background: 'linear-gradient(135deg, #a38057 0%, #8a6420 100%)', padding: '3rem 2rem' }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '2rem', textAlign: 'center' }}>
-          {stats.map(s => (
-            <div key={s.num} className="reveal">
-              <div className="gold-shimmer" style={{ fontSize: '2.5rem', fontWeight: 700, fontFamily: 'var(--font-sans)',
-                /* override shimmer colors for dark-on-gold context */
-                background: 'linear-gradient(90deg,#0d1b2a 0%,#2a1a00 40%,#4a3000 50%,#2a1a00 60%,#0d1b2a 100%)',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-                backgroundSize: '200% auto', animation: 'shimmer 4s linear infinite',
-              }}>{s.num}</div>
-              <div style={{ color: 'rgba(13,27,42,0.75)', fontSize: '0.85rem', fontFamily: 'var(--font-sans)', letterSpacing: '0.05em' }}>{s.label}</div>
-            </div>
-          ))}
+          <div ref={statYears.ref} className="reveal">
+            <div style={{ fontSize: '2.5rem', fontWeight: 700, fontFamily: 'var(--font-sans)',
+              background: 'linear-gradient(90deg,#0d1b2a 0%,#2a1a00 40%,#4a3000 50%,#2a1a00 60%,#0d1b2a 100%)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+              backgroundSize: '200% auto', animation: 'shimmer 4s linear infinite',
+            }}>{statYears.count}+</div>
+            <div style={{ color: 'rgba(13,27,42,0.75)', fontSize: '0.85rem', fontFamily: 'var(--font-sans)', letterSpacing: '0.05em' }}>Years of Excellence</div>
+          </div>
+          <div ref={statGuests.ref} className="reveal">
+            <div style={{ fontSize: '2.5rem', fontWeight: 700, fontFamily: 'var(--font-sans)',
+              background: 'linear-gradient(90deg,#0d1b2a 0%,#2a1a00 40%,#4a3000 50%,#2a1a00 60%,#0d1b2a 100%)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+              backgroundSize: '200% auto', animation: 'shimmer 4s linear infinite',
+            }}>{statGuests.count.toLocaleString()}+</div>
+            <div style={{ color: 'rgba(13,27,42,0.75)', fontSize: '0.85rem', fontFamily: 'var(--font-sans)', letterSpacing: '0.05em' }}>Happy Guests</div>
+          </div>
+          <div className="reveal">
+            <div className="gold-shimmer" style={{ fontSize: '2.5rem', fontWeight: 700, fontFamily: 'var(--font-sans)',
+              background: 'linear-gradient(90deg,#0d1b2a 0%,#2a1a00 40%,#4a3000 50%,#2a1a00 60%,#0d1b2a 100%)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+              backgroundSize: '200% auto', animation: 'shimmer 4s linear infinite',
+            }}>4.8★</div>
+            <div style={{ color: 'rgba(13,27,42,0.75)', fontSize: '0.85rem', fontFamily: 'var(--font-sans)', letterSpacing: '0.05em' }}>Average Rating</div>
+          </div>
+          <div ref={statRooms.ref} className="reveal">
+            <div style={{ fontSize: '2.5rem', fontWeight: 700, fontFamily: 'var(--font-sans)',
+              background: 'linear-gradient(90deg,#0d1b2a 0%,#2a1a00 40%,#4a3000 50%,#2a1a00 60%,#0d1b2a 100%)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+              backgroundSize: '200% auto', animation: 'shimmer 4s linear infinite',
+            }}>{statRooms.count}</div>
+            <div style={{ color: 'rgba(13,27,42,0.75)', fontSize: '0.85rem', fontFamily: 'var(--font-sans)', letterSpacing: '0.05em' }}>Room Categories</div>
+          </div>
         </div>
       </section>
 

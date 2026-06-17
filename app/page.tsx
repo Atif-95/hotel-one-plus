@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Star, ArrowRight, Mountain, Utensils, Flame, Car, Sparkles, Wifi, Fish, ParkingSquare } from 'lucide-react';
+import { Star, ArrowRight, Mountain, Utensils, Flame, Car, Sparkles, Wifi, Fish, ParkingSquare, CalendarDays, Users } from 'lucide-react';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 interface Room { id:number; name:string; price:number; bed:string; image:string; amenities:string[]; description:string; available:boolean; }
@@ -22,7 +22,7 @@ export default function HomePage() {
   const [guests, setGuests] = useState('2');
   const [hoveredAmenity, setHoveredAmenity] = useState<number|null>(null);
 
-  useScrollReveal();
+  useScrollReveal([db]);
 
   useEffect(() => { fetch('/db.json').then(r=>r.json()).then(setDb); }, []);
 
@@ -40,25 +40,27 @@ export default function HomePage() {
       {/* HERO */}
       <section style={{minHeight:'100vh',position:'relative',display:'flex',alignItems:'center',justifyContent:'center',overflow:'hidden'}}>
         <div style={{position:'absolute',inset:0,zIndex:0}}>
-          <Image src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800" alt="Naran" fill style={{objectFit:'cover'}} priority />
+          <Image src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800" alt="Naran" fill style={{objectFit:'cover'}} priority className="hero-pan" />
           <div style={{position:'absolute',inset:0,background:'linear-gradient(180deg,rgba(13,27,42,0.7) 0%,rgba(13,27,42,0.35) 40%,rgba(13,27,42,0.88) 100%)'}} />
           {/* Bottom vignette */}
           <div style={{position:'absolute',bottom:0,left:0,right:0,height:'40%',background:'linear-gradient(to top, #0d1b2a 0%, transparent 40%)',zIndex:1}} />
         </div>
         <div style={{position:'relative',zIndex:2,textAlign:'center',maxWidth:'900px',padding:'0 2rem',marginTop:'5rem'}}>
           {/* Decorative line above badge */}
-          <div style={{width:'40px',height:'1px',background:'#a38057',margin:'0 auto 1rem'}} />
-          <div style={{display:'inline-flex',alignItems:'center',gap:'0.5rem',marginBottom:'1.5rem',border:'1px solid rgba(163,128,87,0.4)',padding:'0.4rem 1.2rem'}}>
-            <span style={{color:'#b8956b',fontSize:'0.7rem',letterSpacing:'0.25em',fontFamily:'var(--font-sans)',textTransform:'uppercase'}}>Naran Valley, Pakistan · 8,200 ft</span>
+          <div className="hero-anim-1" style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'1rem',marginBottom:'1.5rem'}}>
+            <div style={{width:'40px',height:'1px',background:'#a38057'}} />
+            <div style={{display:'inline-flex',alignItems:'center',gap:'0.5rem',border:'1px solid rgba(163,128,87,0.4)',padding:'0.4rem 1.2rem'}}>
+              <span style={{color:'#b8956b',fontSize:'0.7rem',letterSpacing:'0.25em',fontFamily:'var(--font-sans)',textTransform:'uppercase'}}>Naran Valley, Pakistan · 8,200 ft</span>
+            </div>
           </div>
-          <h1 style={{fontSize:'clamp(3rem,7vw,6rem)',fontWeight:400,lineHeight:1.1,marginBottom:'1.5rem',color:'#ffffff'}}>
+          <h1 className="hero-anim-2" style={{fontSize:'clamp(3rem,7vw,6rem)',fontWeight:400,lineHeight:1.1,marginBottom:'1.5rem',color:'#ffffff'}}>
             Where the Mountains Meet<br/>
             <span className="gold-shimmer" style={{fontStyle:'italic'}}>Luxury</span>
           </h1>
-          <p style={{color:'rgba(245,240,232,0.85)',fontSize:'1.1rem',maxWidth:'600px',margin:'0 auto 2.5rem',lineHeight:1.8}}>
+          <p className="hero-anim-3" style={{color:'rgba(245,240,232,0.85)',fontSize:'1.1rem',maxWidth:'600px',margin:'0 auto 2.5rem',lineHeight:1.8}}>
             Nestled in the heart of Naran Valley, Hotel One Plus offers an unparalleled mountain retreat. Wake up to breathtaking Himalayan peaks and the pristine Kunhar River.
           </p>
-          <div style={{display:'flex',gap:'1rem',justifyContent:'center',flexWrap:'wrap'}}>
+          <div className="hero-anim-4" style={{display:'flex',gap:'1rem',justifyContent:'center',flexWrap:'wrap'}}>
             <Link href="/rooms" className="btn-gold" style={{display:'inline-flex',alignItems:'center',gap:'0.5rem',textDecoration:'none'}}>
               Explore Rooms <ArrowRight size={14} />
             </Link>
@@ -67,44 +69,74 @@ export default function HomePage() {
             </Link>
           </div>
           {/* Hero stats row */}
-          <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'2rem',marginTop:'3rem',flexWrap:'wrap'}}>
-            {[
-              { value: '8,200 ft', label: 'Elevation' },
-              { value: '★ 4.9', label: 'Rating' },
-              { value: '50+', label: 'Rooms' },
-            ].map((stat, i) => (
-              <div key={i} style={{textAlign:'center'}}>
-                <div style={{color:'#cda882',fontSize:'1rem',fontVariant:'small-caps',letterSpacing:'0.08em',fontFamily:'var(--font-sans)',fontWeight:600}}>{stat.value}</div>
-                <div style={{color:'rgba(163,128,87,0.7)',fontSize:'0.65rem',letterSpacing:'0.2em',fontFamily:'var(--font-sans)',textTransform:'uppercase'}}>{stat.label}</div>
-              </div>
-            ))}
-          </div>
-          <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'0.5rem',marginTop:'1.5rem'}}>
-            {[1,2,3,4,5].map(s=><Star key={s} size={14} fill="#b8956b" color="#b8956b"/>)}
-            <span style={{color:'#cda882',fontSize:'0.85rem',fontFamily:'var(--font-sans)'}}>{db.hotel.rating} · {db.hotel.totalReviews} reviews</span>
+          <div className="hero-anim-5" style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'1.5rem',marginTop:'3rem'}}>
+            <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'2rem',flexWrap:'wrap'}}>
+              {[
+                { value: '8,200 ft', label: 'Elevation' },
+                { value: '★ 4.9', label: 'Rating' },
+                { value: '50+', label: 'Rooms' },
+              ].map((stat, i) => (
+                <div key={i} style={{textAlign:'center'}}>
+                  <div style={{color:'#cda882',fontSize:'1rem',fontVariant:'small-caps',letterSpacing:'0.08em',fontFamily:'var(--font-sans)',fontWeight:600}}>{stat.value}</div>
+                  <div style={{color:'rgba(163,128,87,0.7)',fontSize:'0.65rem',letterSpacing:'0.2em',fontFamily:'var(--font-sans)',textTransform:'uppercase'}}>{stat.label}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'0.5rem'}}>
+              {[1,2,3,4,5].map(s=><Star key={s} size={14} fill="#b8956b" color="#b8956b"/>)}
+              <span style={{color:'#cda882',fontSize:'0.85rem',fontFamily:'var(--font-sans)'}}>{db.hotel.rating} · {db.hotel.totalReviews} reviews</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* BOOKING BAR */}
-      <section style={{background:'#0a1520',borderTop:'2px solid rgba(163,128,87,0.35)',borderBottom:'1px solid rgba(163,128,87,0.2)',padding:'2rem 0'}}>
-        <div style={{maxWidth:'1100px',margin:'0 auto',padding:'0 2rem'}}>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(160px,1fr))',gap:'1rem',alignItems:'end'}}>
-            {[{label:'Check In',type:'date'},{label:'Check Out',type:'date'}].map(f=>(
-              <div key={f.label}>
-                <label style={{display:'block',color:'#b8956b',fontSize:'0.65rem',letterSpacing:'0.2em',fontFamily:'var(--font-sans)',marginBottom:'0.5rem',textTransform:'uppercase'}}>{f.label}</label>
-                <input type={f.type} style={{width:'100%',background:'rgba(255,255,255,0.04)',border:'1px solid rgba(163,128,87,0.3)',color:'#f5f0e8',padding:'0.75rem 1rem',fontSize:'0.9rem',outline:'none',colorScheme:'dark',cursor:'pointer',transition:'border-color 0.2s'}}/>
+      <section style={{background:'#060d16',padding:'2.5rem 2rem'}}>
+        <div style={{maxWidth:'1020px',margin:'0 auto'}}>
+          <div style={{background:'#0d1b2a',border:'1px solid rgba(163,128,87,0.25)',borderTop:'3px solid #a38057',padding:'2rem 2.5rem',boxShadow:'0 24px 64px rgba(0,0,0,0.55)'}}>
+
+            {/* Panel header */}
+            <div style={{display:'flex',alignItems:'flex-start',justifyContent:'space-between',marginBottom:'1.5rem',flexWrap:'wrap',gap:'1rem'}}>
+              <div>
+                <p style={{color:'#a38057',fontSize:'0.62rem',letterSpacing:'0.3em',fontFamily:'var(--font-sans)',textTransform:'uppercase',marginBottom:'0.3rem'}}>Plan Your Visit</p>
+                <h3 style={{color:'#f5f0e8',fontSize:'1.25rem',fontWeight:400,letterSpacing:'0.02em'}}>Reserve Your Stay</h3>
               </div>
-            ))}
-            <div>
-              <label style={{display:'block',color:'#b8956b',fontSize:'0.65rem',letterSpacing:'0.2em',fontFamily:'var(--font-sans)',marginBottom:'0.5rem',textTransform:'uppercase'}}>Guests</label>
-              <select value={guests} onChange={e=>setGuests(e.target.value)} style={{width:'100%',background:'#0d1b2a',border:'1px solid rgba(163,128,87,0.3)',color:'#f5f0e8',padding:'0.75rem 1rem',fontSize:'0.9rem',outline:'none',transition:'border-color 0.2s'}}>
-                {['1','2','3','4','5','6+'].map(n=><option key={n}>{n} Guest{n!=='1'?'s':''}</option>)}
-              </select>
+              <div style={{display:'flex',gap:'1.75rem',paddingTop:'0.25rem'}}>
+                {[{v:'24/7',l:'Service'}].map(s=>(
+                  <div key={s.l} style={{textAlign:'center'}}>
+                    <div style={{color:'#cda882',fontSize:'0.88rem',fontWeight:700,fontFamily:'var(--font-sans)'}}>{s.v}</div>
+                    <div style={{color:'#8a9ab0',fontSize:'0.58rem',letterSpacing:'0.15em',textTransform:'uppercase',fontFamily:'var(--font-sans)'}}>{s.l}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <Link href="/rooms" className="btn-gold" style={{display:'block',textAlign:'center',textDecoration:'none',padding:'0.82rem 1rem'}}>
-              Check Availability
-            </Link>
+
+            {/* Gold divider */}
+            <div style={{height:'1px',background:'linear-gradient(to right,rgba(163,128,87,0.6),rgba(163,128,87,0.1))',marginBottom:'1.75rem'}} />
+
+            {/* Fields */}
+            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))',gap:'1rem',alignItems:'end'}}>
+              {[{label:'Check In'},{label:'Check Out'}].map(f=>(
+                <div key={f.label}>
+                  <label style={{display:'flex',alignItems:'center',gap:'0.4rem',color:'#b8956b',fontSize:'0.62rem',letterSpacing:'0.2em',fontFamily:'var(--font-sans)',marginBottom:'0.5rem',textTransform:'uppercase'}}>
+                    <CalendarDays size={11}/> {f.label}
+                  </label>
+                  <input type="date" style={{width:'100%',background:'rgba(255,255,255,0.03)',border:'1px solid rgba(163,128,87,0.2)',borderBottom:'2px solid rgba(163,128,87,0.5)',color:'#f5f0e8',padding:'0.8rem 1rem',fontSize:'0.88rem',outline:'none',colorScheme:'dark',cursor:'pointer'}}/>
+                </div>
+              ))}
+              <div>
+                <label style={{display:'flex',alignItems:'center',gap:'0.4rem',color:'#b8956b',fontSize:'0.62rem',letterSpacing:'0.2em',fontFamily:'var(--font-sans)',marginBottom:'0.5rem',textTransform:'uppercase'}}>
+                  <Users size={11}/> Guests
+                </label>
+                <select value={guests} onChange={e=>setGuests(e.target.value)} style={{width:'100%',background:'rgba(255,255,255,0.03)',border:'1px solid rgba(163,128,87,0.2)',borderBottom:'2px solid rgba(163,128,87,0.5)',color:'#f5f0e8',padding:'0.8rem 1rem',fontSize:'0.88rem',outline:'none',cursor:'pointer'}}>
+                  {['1','2','3','4','5','6+'].map(n=><option key={n} style={{background:'#0d1b2a'}}>{n} Guest{n!=='1'?'s':''}</option>)}
+                </select>
+              </div>
+              <Link href="/rooms" className="btn-gold" style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'0.4rem',textDecoration:'none',padding:'0.85rem 1.25rem',fontSize:'0.78rem',letterSpacing:'0.08em',whiteSpace:'nowrap'}}>
+                Check Availability <ArrowRight size={13}/>
+              </Link>
+            </div>
+
           </div>
         </div>
       </section>
@@ -122,7 +154,7 @@ export default function HomePage() {
           <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(min(100%,320px),1fr))',gap:'2rem'}}>
             {db.rooms.slice(0,3).map((room, idx)=>(
               <div key={room.id} className={`card-hover reveal reveal-delay-${idx+1}`} style={{background:'#162032',border:'1px solid rgba(163,128,87,0.15)',overflow:'hidden'}}>
-                <div style={{position:'relative',height:'220px'}}>
+                <div className="img-zoom" style={{position:'relative',height:'220px'}}>
                   <Image src={room.image} alt={room.name} fill style={{objectFit:'cover'}}/>
                   {/* Gradient overlay with room name + price */}
                   <div style={{position:'absolute',inset:0,background:'linear-gradient(to top, rgba(13,27,42,0.9) 0%, transparent 60%)',zIndex:1,display:'flex',flexDirection:'column',justifyContent:'flex-end',padding:'1rem 1.25rem'}}>
