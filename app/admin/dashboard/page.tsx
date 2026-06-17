@@ -16,14 +16,7 @@ interface Room {
 interface DB {
   hotel: { name: string; rating: number; totalReviews: number };
   rooms: Room[];
-  bookings: Booking[];
   testimonials: { id: number; name: string; city: string; rating: number; comment: string; date: string }[];
-}
-
-interface Booking {
-  id: number; roomId: number; roomName: string; guestName: string;
-  phone: string; email: string; checkIn: string; checkOut: string;
-  guests: number; status: 'pending' | 'confirmed' | 'cancelled'; createdAt: string;
 }
 
 const NAV = [
@@ -32,18 +25,11 @@ const NAV = [
 { key: 'reviews', label: 'Reviews', icon: <Star size={18} /> },
 ];
 
-const SAMPLE_BOOKINGS: Booking[] = [
-  { id: 1, roomId: 2, roomName: 'Deluxe River View', guestName: 'Ahmed Khan', phone: '+92-300-1234567', email: 'ahmed@email.com', checkIn: '2024-12-20', checkOut: '2024-12-23', guests: 2, status: 'confirmed', createdAt: '2024-12-10' },
-  { id: 2, roomId: 3, roomName: 'Family Suite', guestName: 'Sara Family', phone: '+92-321-7654321', email: 'sara@email.com', checkIn: '2024-12-25', checkOut: '2024-12-30', guests: 4, status: 'pending', createdAt: '2024-12-12' },
-  { id: 3, roomId: 6, roomName: 'Honeymoon Suite', guestName: 'Mr & Mrs Raza', phone: '+92-333-9876543', email: 'raza@email.com', checkIn: '2024-12-28', checkOut: '2025-01-02', guests: 2, status: 'confirmed', createdAt: '2024-12-14' },
-  { id: 4, roomId: 1, roomName: 'Standard Mountain View', guestName: 'Tariq Mahmood', phone: '+92-312-5551234', email: 'tariq@email.com', checkIn: '2025-01-05', checkOut: '2025-01-07', guests: 1, status: 'pending', createdAt: '2024-12-15' },
-];
 
 export default function AdminDashboard() {
   const router = useRouter();
   const [tab, setTab] = useState('dashboard');
   const [db, setDb] = useState<DB | null>(null);
-  const [bookings, setBookings] = useState<Booking[]>(SAMPLE_BOOKINGS);
   const [adminName, setAdminName] = useState('Manager');
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [editRoom, setEditRoom] = useState<Room | null>(null);
@@ -89,7 +75,6 @@ export default function AdminDashboard() {
 
   const available = db.rooms.filter(r => r.available).length;
   const booked = db.rooms.length - available;
-  const pendingCount = bookings.filter(b => b.status === 'pending').length;
 
   const SIDEBAR_W = sidebarOpen ? '240px' : '64px';
 
@@ -151,9 +136,6 @@ export default function AdminDashboard() {
             <ChevronRight size={12} />
             <span style={{ color: '#f5f0e8', textTransform: 'capitalize' }}>{tab}</span>
           </div>
-          <div style={{ marginLeft: 'auto', background: 'rgba(163,128,87,0.1)', border: '1px solid rgba(163,128,87,0.25)', color: '#b8956b', padding: '0.3rem 0.75rem', fontSize: '0.72rem' }}>
-            {pendingCount} Pending
-          </div>
         </div>
 
         <div style={{ padding: '2rem 1.5rem' }}>
@@ -169,8 +151,6 @@ export default function AdminDashboard() {
                   { label: 'Total Rooms', value: db.rooms.length, color: '#b8956b', bg: 'rgba(163,128,87,0.1)' },
                   { label: 'Available', value: available, color: '#4caf50', bg: 'rgba(76,175,80,0.1)' },
                   { label: 'Booked / Unavailable', value: booked, color: '#f44336', bg: 'rgba(244,67,54,0.1)' },
-                  { label: 'Total Bookings', value: bookings.length, color: '#2196f3', bg: 'rgba(33,150,243,0.1)' },
-                  { label: 'Pending Requests', value: pendingCount, color: '#ff9800', bg: 'rgba(255,152,0,0.1)' },
                   { label: 'Rating', value: db.hotel.rating + '★', color: '#cda882', bg: 'rgba(232,201,122,0.1)' },
                 ].map(s => (
                   <div key={s.label} style={{ background: '#162032', border: `1px solid ${s.bg}`, padding: '1.5rem', borderLeft: `3px solid ${s.color}` }}>
@@ -180,31 +160,6 @@ export default function AdminDashboard() {
                 ))}
               </div>
 
-              {/* Recent Bookings Preview */}
-              <h3 style={{ color: '#cda882', fontSize: '1rem', marginBottom: '1rem' }}>Recent Bookings</h3>
-              <div style={{ background: '#162032', border: '1px solid rgba(163,128,87,0.15)', overflowX: 'auto' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                  <thead>
-                    <tr style={{ borderBottom: '1px solid rgba(163,128,87,0.15)' }}>
-                      {['Guest', 'Room', 'Check-in', 'Status'].map(h => (
-                        <th key={h} style={{ padding: '0.85rem 1rem', textAlign: 'left', color: '#b8956b', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {bookings.slice(0, 4).map(b => (
-                      <tr key={b.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                        <td style={{ padding: '0.85rem 1rem', color: '#f5f0e8', fontSize: '0.85rem' }}>{b.guestName}</td>
-                        <td style={{ padding: '0.85rem 1rem', color: '#8a9ab0', fontSize: '0.85rem' }}>{b.roomName}</td>
-                        <td style={{ padding: '0.85rem 1rem', color: '#8a9ab0', fontSize: '0.85rem' }}>{b.checkIn}</td>
-                        <td style={{ padding: '0.85rem 1rem' }}>
-                          <span style={{ background: b.status === 'confirmed' ? 'rgba(76,175,80,0.15)' : b.status === 'pending' ? 'rgba(255,152,0,0.15)' : 'rgba(244,67,54,0.15)', color: b.status === 'confirmed' ? '#4caf50' : b.status === 'pending' ? '#ff9800' : '#f44336', padding: '0.2rem 0.6rem', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{b.status}</span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
             </div>
           )}
 
