@@ -2,8 +2,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Star, ArrowRight, Mountain, Utensils, Flame, Car, Sparkles, Wifi, Fish, ParkingSquare, CalendarDays, Users } from 'lucide-react';
+import { Star, ArrowRight, Mountain, Utensils, Flame, Car, Sparkles, Wifi, Fish, ParkingSquare, Users } from 'lucide-react';
 import { useScrollReveal } from './hooks/useScrollReveal';
+import DatePicker from './components/DatePicker';
 
 interface Room { id:number; name:string; price:number; bed:string; image:string; amenities:string[]; description:string; available:boolean; }
 interface Testimonial { id:number; name:string; city:string; rating:number; comment:string; date:string; }
@@ -19,7 +20,9 @@ const AMENITY_ICONS: Record<string, React.ComponentType<{ size?: number; color?:
 
 export default function HomePage() {
   const [db, setDb] = useState<DB|null>(null);
-  const [guests, setGuests] = useState('2');
+  const [checkIn, setCheckIn] = useState<Date|null>(null);
+  const [checkOut, setCheckOut] = useState<Date|null>(null);
+  const [guests, setGuests] = useState(2);
   const [hoveredAmenity, setHoveredAmenity] = useState<number|null>(null);
 
   useScrollReveal([db]);
@@ -116,21 +119,17 @@ export default function HomePage() {
 
             {/* Fields */}
             <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))',gap:'1rem',alignItems:'end'}}>
-              {[{label:'Check In'},{label:'Check Out'}].map(f=>(
-                <div key={f.label}>
-                  <label style={{display:'flex',alignItems:'center',gap:'0.4rem',color:'#b8956b',fontSize:'0.62rem',letterSpacing:'0.2em',fontFamily:'var(--font-sans)',marginBottom:'0.5rem',textTransform:'uppercase'}}>
-                    <CalendarDays size={11}/> {f.label}
-                  </label>
-                  <input type="date" style={{width:'100%',background:'rgba(255,255,255,0.03)',border:'1px solid rgba(163,128,87,0.2)',borderBottom:'2px solid rgba(163,128,87,0.5)',color:'#f5f0e8',padding:'0.8rem 1rem',fontSize:'0.88rem',outline:'none',colorScheme:'dark',cursor:'pointer'}}/>
-                </div>
-              ))}
+              <DatePicker label="Check In" value={checkIn} onChange={setCheckIn} />
+              <DatePicker label="Check Out" value={checkOut} onChange={setCheckOut} minDate={checkIn ?? undefined} alignRight />
               <div>
                 <label style={{display:'flex',alignItems:'center',gap:'0.4rem',color:'#b8956b',fontSize:'0.62rem',letterSpacing:'0.2em',fontFamily:'var(--font-sans)',marginBottom:'0.5rem',textTransform:'uppercase'}}>
                   <Users size={11}/> Guests
                 </label>
-                <select value={guests} onChange={e=>setGuests(e.target.value)} style={{width:'100%',background:'rgba(255,255,255,0.03)',border:'1px solid rgba(163,128,87,0.2)',borderBottom:'2px solid rgba(163,128,87,0.5)',color:'#f5f0e8',padding:'0.8rem 1rem',fontSize:'0.88rem',outline:'none',cursor:'pointer'}}>
-                  {['1','2','3','4','5','6+'].map(n=><option key={n} style={{background:'#0d1b2a'}}>{n} Guest{n!=='1'?'s':''}</option>)}
-                </select>
+                <div style={{display:'flex',alignItems:'center',background:'rgba(255,255,255,0.03)',border:'1px solid rgba(163,128,87,0.2)',borderBottom:'2px solid rgba(163,128,87,0.5)'}}>
+                  <button onClick={()=>setGuests(g=>Math.max(1,g-1))} style={{padding:'0.8rem 1rem',background:'none',border:'none',borderRight:'1px solid rgba(163,128,87,0.15)',color:'#b8956b',cursor:'pointer',fontSize:'1rem',lineHeight:1}}>−</button>
+                  <span style={{flex:1,textAlign:'center',color:'#f5f0e8',fontSize:'0.88rem',fontFamily:'var(--font-sans)'}}>{guests} Guest{guests!==1?'s':''}</span>
+                  <button onClick={()=>setGuests(g=>Math.min(10,g+1))} style={{padding:'0.8rem 1rem',background:'none',border:'none',borderLeft:'1px solid rgba(163,128,87,0.15)',color:'#b8956b',cursor:'pointer',fontSize:'1rem',lineHeight:1}}>+</button>
+                </div>
               </div>
               <Link href="/rooms" className="btn-gold" style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'0.4rem',textDecoration:'none',padding:'0.85rem 1.25rem',fontSize:'0.78rem',letterSpacing:'0.08em',whiteSpace:'nowrap'}}>
                 Check Availability <ArrowRight size={13}/>
@@ -236,7 +235,7 @@ export default function HomePage() {
             {db.testimonials.map(t=>(
               <div key={t.id} className="reveal" style={{background:'#162032',border:'1px solid rgba(163,128,87,0.15)',borderLeft:'3px solid #a38057',padding:'2rem',position:'relative',overflow:'hidden'}}>
                 {/* Large opening quote */}
-                <div style={{position:'absolute',top:'-0.5rem',left:'1rem',color:'#a38057',fontSize:'6rem',lineHeight:1,fontFamily:'var(--font-serif)',opacity:0.2,pointerEvents:'none',userSelect:'none'}}>"</div>
+                <div style={{position:'absolute',top:'0.5rem',left:'1rem',color:'#a38057',fontSize:'6rem',lineHeight:1,fontFamily:'var(--font-serif)',opacity:0.2,pointerEvents:'none',userSelect:'none'}}>"</div>
                 <div style={{position:'relative',zIndex:1}}>
                   <p style={{color:'#c8c0b0',fontSize:'0.92rem',lineHeight:1.8,marginBottom:'1.5rem',fontStyle:'italic'}}>{t.comment}</p>
                   <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
@@ -262,10 +261,10 @@ export default function HomePage() {
         {/* Decorative border frame */}
         <div style={{position:'absolute',inset:'2rem',border:'1px solid rgba(163,128,87,0.3)',pointerEvents:'none',zIndex:1}} />
         <div style={{position:'relative',zIndex:2,textAlign:'center',maxWidth:'700px',margin:'0 auto'}}>
-          <h2 style={{fontSize:'clamp(2rem,4vw,3.5rem)',fontWeight:400,color:'#ffffff',marginBottom:'1rem'}}>
+          <h2 style={{fontSize:'clamp(2rem,4vw,3.5rem)',fontWeight:400,color:'#ffffff',marginBottom:'0.75rem',letterSpacing:'-0.03em',wordSpacing:'-0.12em'}}>
             Ready for a <span className="gold-shimmer">Mountain Escape</span>?
           </h2>
-          <p style={{color:'rgba(245,240,232,0.8)',fontSize:'1rem',marginBottom:'2.5rem',lineHeight:1.8}}>Book your stay at Hotel One Plus and discover the magic of Naran Valley.</p>
+          <p style={{color:'rgba(245,240,232,0.8)',fontSize:'1rem',marginBottom:'1.5rem',lineHeight:1.8}}>Book your stay at Hotel One Plus and discover the magic of Naran Valley.</p>
           <div style={{display:'flex',gap:'1rem',justifyContent:'center',flexWrap:'wrap'}}>
             <Link href="/rooms" className="btn-gold" style={{textDecoration:'none'}}>Book Your Room</Link>
             <Link href="/contact" className="btn-outline" style={{textDecoration:'none'}}>Contact Us</Link>
